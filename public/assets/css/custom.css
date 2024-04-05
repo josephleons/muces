@@ -1,0 +1,115 @@
+
+body{
+    font-family: 'Arial' serif;
+    background-color: #3660a8;
+    
+
+}
+.bodyColor{
+    background-color: #F0F3F8;
+}
+.textColor2:hover{
+    color: #FD876D;
+    border:none;
+}
+.textColor2{
+    color: #FD876D;
+    border:none;
+}
+.textColor{
+    color: #51829B;
+}
+.login{
+    background-color:#85149E ;
+    cursor: pointer;
+    border:none;
+    
+}
+/* .cus:hover{
+    background-color:#30BCED ;
+    cursor: pointer;
+    border:none;
+    
+} */
+.title{
+    color:#30BCED;
+    font-size:24px;
+}
+.car card{
+    box-shadow: 2px 2px -2px -1px #000000bf;
+    -webkit-box-shadow: 3px 4px 1px -1px #FD876D;
+    -moz-box-shadow: 3px 4px 1px -1px #000000bf;
+}
+.icons{
+    margin:2px;
+    width:2%;
+    height: 2%;
+    font-size: 4rem; 
+    color: cornflowerblue;
+}
+.style{
+    color:#2D3748;
+}
+.p{
+   padding-top:20px;
+   text-transform: capitalize;
+   font-family:sans-serif;
+}
+.close{
+    background-color: #FD876D;
+    color: #F0F3F8;
+}
+
+#evaluatorDropdown {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    }
+
+#evaluatorDropdown.show {
+  display: block;
+  opacity: 1;
+  }
+
+#userDropdown{
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+#userDropdown.show {
+    display: block;
+    opacity: 1;
+    }
+  
+#registrationDropdown {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        }
+    
+#registrationDropdown.show {
+      display: block;
+      opacity: 1;
+      }
+#FacultyDropdown {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        }
+    
+#FacultyDropdown.show {
+      display: block;
+      opacity: 1;
+      }
+
+#StudentsDropdown {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        }
+    
+#StudentsDropdown.show {
+      display: block;
+      opacity: 1;
+      }
+    
