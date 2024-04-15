@@ -19,7 +19,7 @@ return new class extends Migration
             ->on('users');
         $table->foreign('task_id')
             ->references('id')
-            ->on('tasks');
+            ->on('responses');
         });
     }
 

@@ -15,9 +15,6 @@ return new class extends Migration
     {
         Schema::create('report_evaluations', function (Blueprint $table) {
             $table->id();
-            $table->string('task');
-            $table->string('Student');
-            $table->string('due date');
             $table->string('rating');
             $table->string('remark');
             $table->string('perfomance_aveg');
