@@ -15,18 +15,15 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('surname');
-            $table->string('gender');
-            $table->string('contact');
-            $table->string('email');
-            $table->string('yearOfstudy');
+            $table->string('fullname');
+            $table->string('registration_no');
+            $table->string('accademic_year');
             $table->string('semister');
-            $table->string('program');
             $table->string('nida');
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('program_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+           
+           
            
         });
     }

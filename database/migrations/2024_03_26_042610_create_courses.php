@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('code');
             $table->string('type');
             $table->string('credit');
+            $table->string('lecturer');
             $table->unsignedBigInteger('program_id')->nullable();
+            $table->unsignedBigInteger('lecturer_id')->nullable();
             // $table->timestamps();
         });
     }

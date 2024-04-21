@@ -17,21 +17,21 @@ class facultySeeder extends Seeder
     {
         $faculty = [
             [
-                'name' => 'FST',
+                'faculty' => 'FST',
                 'description' => 'Faculty of science and Technology',
                 'email' => 'faculty@gmail.com',
                 'contact' => '0756452617',
                
             ],
             [
-                'name' => 'SOB',
+                'faculty' => 'SOB',
                 'description' => 'School of Business',
                 'email' => 'sob@gmail.com',
                 'contact' => '0656452629',
                
             ],
             [
-                'name' => 'SOPAM',
+                'faculty' => 'SOPAM',
                 'description' => 'School Of Public Administrative Management',
                 'email' => 'sopam@gmail.com',
                 'contact' => '0657381635',

@@ -23,4 +23,8 @@ class Student extends Model
         return $this->belongsToMany('App\Models\Course');
     }
 
+    public function evaluationForm()
+    {
+        return $this->belongsToMany(EvaluationForm::class);
+    }
 }

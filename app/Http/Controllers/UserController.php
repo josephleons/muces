@@ -51,36 +51,23 @@ class UserController extends Controller
     {
         $this->validate($request,[
             'email'=>'required|email|unique:users',
+            'usertype'=>'required',
             'contact'=>'required',
-            'username'=>'required|unique:users|max:8',
+            'username'=>'required|unique:users',
             'password'=>'required|min:8|same:confirmPassword',
                       
         ]);
-        DB::beginTransaction();
-        // create posty
-        // $user_id=auth()->user()->id;
-        try{
-            $auto_role="Employee";
+       
             $user = new User;
+            $user->usertype=$request->input('usertype');
             $user->contact=$request->input('contact');
             $user->email=$request->input('email');
             $user->username=$request->input('username');
             $user->password=Hash::make($request->input('password'));
             $user->save();
-
-
-            $role = new Role;
-            $role->name=$auto_role;
-            $role->user_id=$user->id;
-            $role->save(); 
-            
-            DB::commit();
-            return redirect('/login')->with('success','Account Created Success ');
+            return redirect('/admin')->with('Success', 'A New User Added Success.');
+            // return redirect()->route('admin')->with('success', 'Account Created Success');
            
-        }catch( Exception $e){
-            DB::rollback();
-            return redirect()->back();
-        }
         
     }
 
@@ -130,6 +117,7 @@ class UserController extends Controller
         $users = new User();
         $result=$users->find($id);
         $result->delete();
+        
 
         return redirect('/users')->with('success' ,'User Remove');
     }

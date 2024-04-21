@@ -112,4 +112,17 @@ body{
       display: block;
       opacity: 1;
       }
+
+#evaluationDropdown {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
     
+#evaluationDropdown.show {
+    display: block;
+    opacity: 1;
+    }
+.dropdown-menu-margin {
+    margin-right: 20px; /* Adjust as needed */
+}

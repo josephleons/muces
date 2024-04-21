@@ -17,6 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    public $timestamps = false;
     protected $fillable = [
         // 'name',
         'username',
@@ -36,17 +37,17 @@ class User extends Authenticatable
 
     // check admin roles
     public function is_admin(){
-        return $this->users()->where('usertype','admin')->exists();
+        return $this->users()->where('usertype','Admin')->exists();
     }
 //    check student roles
     public function is_student(){
         return $this->users()->where('usertype','student')->exists();
     }
-    public function is_evaluator(){
-        return $this->users()->where('usertype','evaluator')->exists();
+    public function is_qualityassuarance(){
+        return $this->users()->where('usertype','Q_assuarance')->exists();
     }
     public function is_dean(){
-        return $this->users()->where('usertype','dean')->exists();
+        return $this->users()->where('usertype','Dean')->exists();
     }
     public function is_guest(){
         return $this->users()->where('usertype','guest')->exists();

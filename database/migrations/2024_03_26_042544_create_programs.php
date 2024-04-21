@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('program');
             $table->string('description');
             $table->string('department');
             $table->unsignedBigInteger('department_id')->nullable();
@@ -31,8 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('programs', function (Blueprint $table) {
-            $table->dropForeign(['department_id']);
-        });
+        Schema::dropIfExists('programs');
     }
 };

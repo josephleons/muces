@@ -22,7 +22,7 @@
   <div class="tab-content  mt-5">
     <div class="tab-pane active" id="user" role="tabpanel" aria-labelledby="user-tab">
       <div class="card-header">
-      @include('inc.messages')
+      {{-- @include('inc.messages') --}}
       <div class="row ml-3">
         <div class="col-lg-12 col-sm-6 col-xm-12 ">
           <div class="table-responsive">
@@ -42,9 +42,6 @@
                 <tr>
                   <td>1</td>
                   <td>{{$user->username}}</td>
-                   @foreach($user->roles as $role)
-                    <td>{{$role->role_type}}</td>
-                  @endforeach
                   <td>{{$user->created_at}}</td>
                   <td>
                     <span>
@@ -68,12 +65,10 @@
   </div>
   </div>
   {{-- end tabs one --}}
-
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
-        @include('inc.messages')
         <h5 class="text-dark modal-title" id="exampleModalLabel">Add New User</h5>
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
       </div>

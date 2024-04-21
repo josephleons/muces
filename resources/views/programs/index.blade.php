@@ -8,40 +8,27 @@
 </div>
 <div class="card p-1" style="margin-left:120px">
 <div class="row lead align-items-center ml-5">
-        <div class="col-2">
-            <div class="form-group" style = 'color:#FD876D'>    
-            @if($programs->isEmpty())
-                 <p>No Program related to course</p>
-             @else
-            @foreach($programs as $program)
-                    {{$program->description}}
-                    @endforeach
-                @endif
-            </div>
-        </div>
-            <div class="col-10 col-sm-6 col-xm-12 ">
+            <div class="col-12 col-sm-12 col-xm-12 ">
                 <table id="example" class="display table table-bordereless" style="width:100%">
                     <thead class="table-muted">
-                        <tr class="text-muted" style="text-transform: capitalize;font-size:14px;">
+                        <tr class="text-muted text-capitalize fs-6">
                             <th>S/N</th>
-                            <th>Course</th>
-                            <th>Code</th>
-                            <th>Type</th>
-                            <th>Lecturer</th>
-                            <th>Credit</th>
-                            <th>Registered by</th>
+                            <th>Student Name</th>
+                            <th>Program</th>
+                            <th>Department</th>
+                            <th>Semister</th>
+                            <th>Accademic Year</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody class="text-capitalize">
+                        <tr class="text-muted fs-5">
                             <td>1</td>
-                            <td>Development Perspectives</td>
-                            <td>DST 100</td>
-                            <td>None Core</td>
-                            <td>Elihaika Kengalo Joseph</td>
-                            <td class="text-info">12.00</td>
-                            <td>Department</td>
+                            <td>{{$student->fullname}}</td>
+                            {{-- <td>{{$programs->program}}</td>
+                            <td>{{$programs->department}}</td> --}}
+                            <td>{{$student->semister}}</td>
+                            <td>{{$student->yearOfstudy}}</td>
                             <td>
                                 <span>
                                     <div class="btn-group">
@@ -60,9 +47,6 @@
                     </tbody>
                 </table>
             </div>
-     
-    </div> 
-
-
+        </div> 
 </div>
 @endsection

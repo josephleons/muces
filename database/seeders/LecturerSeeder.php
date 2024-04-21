@@ -17,10 +17,10 @@ class LecturerSeeder extends Seeder
     {
         $lecturer = [
             [
-                'name' => 'lecturer@example.com',
-                'email' => 'lecture@example.com',
-                'department' => 'CSS',
+                'lecturer' => 'kasheshe makumbusho masalu',
                 'department_id' => '1',
+                'user_id'=>'4',
+
             ],
         ];
         DB::table('lecturer')->insert($lecturer);

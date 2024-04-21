@@ -7,6 +7,7 @@ use App\Models\Program;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ProgramController extends Controller
 {
@@ -18,21 +19,17 @@ class ProgramController extends Controller
     public function index()
 
     {
-    // // Fetch a single student along with their associated program and courses
-    // $student = Student::with('program.courses')->first();
-    // return view('programs.index',  compact('student'));
+        $userId = Auth::id();
+         // // Fetch a single student along with their associated program and courses
+        $student = Student::where('user_id',$userId)->first();
+        if($student){
+            $programs = $student->program;
+            return view('programs.index',  compact('programs','student'));
+        }else{
+            // Pass the programs data to the view
+            return view('programs.index', compact('programs'));
+        }
 
-        // Fetch the programs and related courses for the student using DB query
-        $programs = DB::table('programs')
-        ->join('students', 'programs.id', '=', 'students.program_id')
-        ->join('courses', 'programs.id', '=', 'courses.program_id')
-        ->select('programs.*', 'courses.*')
-        ->where('students.id', auth()->id())
-        ->distinct()
-        ->get();
-
-        // Pass the programs data to the view
-        return view('programs.index', compact('programs'));
     }
 
     /**

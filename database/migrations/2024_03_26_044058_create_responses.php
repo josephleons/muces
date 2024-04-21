@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('report_evaluations', function (Blueprint $table) {
+        Schema::create('response_questions', function (Blueprint $table) {
             $table->id();
-            $table->string('rating');
-            $table->string('remark');
-            $table->string('perfomance_aveg');
-            $table->string('Evaluator');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('task_id')->nullable();
+            $table->string('response');
+            $table->string('status');
+            $table->unsignedBigInteger('evaluation_form_id')->nullable();
+            $table->timestamps();
+
+            $table->foreign('evaluation_form_id')->references('id')->on('evaluation_forms');
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('report_evaluations');
+        Schema::dropIfExists('response_questions');
     }
 };

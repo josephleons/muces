@@ -6,7 +6,7 @@
             Semister I :
         </div>
         <div class="col-9">
-            <h4 class="lead mb-5">Program: {{$program->name}}</h4>
+            <h4 class="lead mb-5">Program: {{$program->program}}</h4>
             <ul class="list-group list-group-numbered">
                 @foreach($courses as $course)
                  <li class="list-group-item d-flex justify-content-between">

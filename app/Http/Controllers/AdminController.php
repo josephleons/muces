@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Student;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,9 +16,31 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('users/admin.index');
+        return view('admin.index');
+    }
+    public function listEvaluator()
+    {
+        $users = User::all();
+        return view('admin.manageuser',['users'=> $users]);
     }
 
+    public function managedepartments()
+    {
+        $departments = Department::all();
+        return view('admin.managedepartments',['departments'=> $departments]);
+    }
+
+    public function managestudents()
+    {
+        $students = Student::with('program')->get();
+        return view('admin.managestudents',['students'=> $students]);
+    }
+
+    public function managequality()
+    {
+        $q_assuarances = User::where('usertype','Q_assuarance')->get();
+        return view('admin.managequality',['q_assuarances'=> $q_assuarances]);
+    }
     /**
      * Show the form for creating a new resource.
      *

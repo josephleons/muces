@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('programs', function (Blueprint $table) {
-            $table->foreign('department_id')->references('id')->on('departments');
+        Schema::table('departments', function (Blueprint $table) {
+            $table->foreign('faculty_id')->references('id')->on('faculties')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('programs', function (Blueprint $table) {
-            $table->dropForeign('department_id');
+        Schema::table('departments', function (Blueprint $table) {
+            $table->dropForeign(['faculty_id']);
         });
     }
 };

@@ -7,7 +7,7 @@
     </div>
     <div class="col">
         <span class="textColor">
-            <a class="nav-link text-muted fs-5 " href="{{ url('#') }}">Course List</a>
+            <a class="nav-link text-muted fs-5 text-uppercase " href="{{ url('#') }}">Courses</a>
         </span>
     </div>
     <hr class="ml-5 mt-2 textColor">
@@ -20,16 +20,6 @@
                 <div class="card-header"style="background-color:#002E3B">
                 </div>
                 <div class="card-body">
-                    {{-- <div class="row m-2">
-                        <div class="col-md-12 d-flex justify-content-end">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item" role="presentation">
-                                    <a href="#adduser" type="button" data-toggle="modal" data-target="#exampleModal">
-                                        <i class="bi bi-plus-circle-dotted fs-5 mr-2 text-danger"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> --}}
                     <div class="row">
                         <div class="col-md-12 col-sm-6 col-xm-12 ">
                             <table id="example" class="display table table-bordered" style="width:100%">
@@ -41,19 +31,19 @@
                                         <th>Type</th>
                                         <th>Lecturer</th>
                                         <th>Credit</th>
-                                        <th>Registered by</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($student->courses as $course)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Development Perspectives</td>
-                                        <td>DST 100</td>
-                                        <td>None Core</td>
-                                        <td>Elihaika Kengalo Joseph</td>
-                                        <td class="text-info">12.00</td>
-                                        <td>Department</td>
+                                        <td>{{$course->id}}</td>
+                                        <td>{{$course->course}}</td>
+                                        <td>{{$course->code}}</td>
+                                        <td>{{$course->type}}</td>
+                                        <td>{{$course->lecturer}}</td>
+                                        <td class="text-info">{{$course->credit}}</td>
+                                        {{-- <td>{{$student->course->program}}</td> --}}
                                         <td>
                                             <span>
                                                 <div class="btn-group">
@@ -69,6 +59,7 @@
                                             </span>
                                         </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

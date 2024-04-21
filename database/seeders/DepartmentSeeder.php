@@ -17,7 +17,7 @@ class DepartmentSeeder extends Seeder
     {
         $department = [
             [
-                'name' => 'EMS',
+                'department' => 'EMS',
                 'description' => 'Department of Mathematics Studies',
                 'email' => 'ems@gmail.com',
                 'contact' => '0756452619',
@@ -26,7 +26,7 @@ class DepartmentSeeder extends Seeder
                
             ],
             [
-                'name' => 'CSS',
+                'department' => 'CSS',
                 'description' => 'Department of Computer Science Studies',
                 'email' => 'css@gmail.com',
                 'contact' => '0756452619',

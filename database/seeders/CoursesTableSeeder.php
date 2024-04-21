@@ -21,6 +21,7 @@ class CoursesTableSeeder extends Seeder
                 'code' => 'DST 100',
                 'type' => 'None Code',
                 'credit' => '12.00',
+                'lecturer' => 'Amani katwila',
                
             ],
             [
@@ -28,6 +29,7 @@ class CoursesTableSeeder extends Seeder
                 'code' => 'COM 101',
                 'type' => 'Core',
                 'credit' => '13.00',
+                'lecturer' => 'Mr mashaka',
               
                 
             ],

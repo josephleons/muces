@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -13,7 +16,20 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('courses.index');
+      
+
+        $userId = Auth::id();
+        $student =Student::where('user_id',$userId)->first();
+        // if student found get they Questionnaire
+        if($student){
+            $courses = $student->courses;
+            $programs = $student->courses;
+             return view ("courses.index",compact('student','courses','programs'));
+        }else{
+             // Handle the case if the logged-in user is not associated with a student
+             return redirect()->back()->with('error', 'You are not associated with a student.');
+        }
+
     }
 
     /**

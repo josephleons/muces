@@ -44,13 +44,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($faculties as $faculty)
+                                    @foreach($faculties as $index=> $faculty)
                                     @foreach($faculty->departments as $department)
                                     <tr>
-                                        <td>{{ $faculty->id }}</td>
-                                        <td>{{ $faculty->name}}</td>
-                                        <td>{{ $department->name ?: 'No data found' }}</td>
-                                        <td class="text-info">{{ $department->description ?: 'No data found' }}</td>
+                                        <td>{{$index +1}}</td>
+                                        <td>{{ $faculty->faculty}}</td>
+                                        <td>{{ $department->department ?: 'No data found' }}</td>
+                                        <td class="text-info">{{strip_tags($department->description ?: 'No data found' )}}</td>
                                         <td class="text-info">{{ $department->email ?: 'No data found' }}</td>
                                         <td class="text-info">{{ $department->contact ?: 'No data found' }}</td>
                                         <td>
@@ -99,7 +99,7 @@
                         <select name="faculty" class="form-select" aria-label="Select your Faculty">
                             <option value="" disabled selected>Select Faculty</option>
                             @foreach($faculties as $faculty)
-                            <option value="{{$faculty->id}}">{{$faculty->name}}</option>
+                            <option value="{{$faculty->id}}">{{$faculty->faculty}}</option>
                             @endforeach
                         </select>
                         {{-- <input type="hidden" name="faculty_name" value="{{ old('faculty_name') ?? '' }}"> --}}
@@ -108,7 +108,7 @@
                 <div class="col-md-12 m-2">
                     <div class="form-group">
                         {{Form::label('','Department Name:')}}
-                        {{Form::text('name','',['class'=>'form-control','placeholder'=>'Department Name
+                        {{Form::text('deparment','',['class'=>'form-control','placeholder'=>'Department Name
                         '])}}
                     </div>
                 </div>

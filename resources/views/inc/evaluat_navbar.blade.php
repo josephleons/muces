@@ -52,16 +52,24 @@
 <div id="side-menu" class="side-nav text-white" style="background-color: #002E3B">
     <img style="width:20px; height:20px" class="shadow rounded-circle mx-2" src="{{ url('assets/images/mucems.jpg') }}">
     <span class="fs-6">{{('MU-CEMS')}}</span>
+    <hr class="my-4">
     <ul class="nav navbar-nav" style="text-transform: capitalizes">
         <a href="#" class="btn-close btn-close-white fs-5" onclick="closeSlideMenu()">
-            </hr>
-            <li class="nav-item">
-                <a class='nav-link text-white  text-muted' href="{{ url('#') }}"><i
-                        class="bi bi-check2-circle text-muted fs-6 m-3"></i>Task</a>
-            </li>
-            <li class="nav-item">
-                <a class='nav-link text-white  text-muted' href="{{ url('#') }}"> <i
-                        class="bi bi-person-workspace text-muted fs-6 m-3"></i>Evaluator</a>
-        </a>
-        </li>
+          
+            <li class="nav-item pt-2">
+                <a class='nav-link text-white text-muted' href="{{ url('#') }}" onclick="toggleEvaluationDropdown(event)">
+                    <i class="bi bi-person-workspace text-muted fs-6 m-3"></i>Evaluator</a>
+                    <ul id="evaluationDropdown" class="nav navbar-nav" style="text-transform: capitalizes">
+                        {{-- <li class="nav-item ml-4"><a class='nav-link text-muted text-white ml-4 fs-6' href="{{ url('/evaluator/index') }}">Questionnare List</a></li> --}}
+                        <li class="nav-item ml-4"><a class='nav-link text-muted text-white ml-4 fs-6' href="{{ url('#') }}">Evaluation records</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class='nav-link text-white  text-muted' href="{{ url('/responses') }}"><i
+                        class="bi bi-check2-circle text-muted fs-6 m-3"></i>Responses Records</a>
+                </li>
+
+            </a>
+        
+       
 </div>

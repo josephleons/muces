@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->foreign('task_id')
-            ->references('id')
-            ->on('tasks');
+        Schema::create('evaluation_form_student', function (Blueprint $table) {
+            $table->primary(['student_id', 'evaluation_form_id']);
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('evaluation_form_id');
+            $table->timestamps();
         });
     }
 
@@ -27,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->dropForeign('task_id');
-        });
+        Schema::dropIfExists('evaluation_form_student');
     }
 };

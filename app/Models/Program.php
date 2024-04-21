@@ -12,7 +12,7 @@ class Program extends Model
         return $this->hasMany(Course::class);
     }
     
-    public function student(){
+    public function students(){
         return $this->hasMany(Student::class);
     }
 }

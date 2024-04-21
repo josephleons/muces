@@ -36,73 +36,54 @@
                     <div class="row m-3 ">
                     </div>
                     <div class="row m-3">
-                        <div class="col-md-4">
-                            <label for="validationCustom01" class="form-label">First name</label>
-                            <input type="text" class="form-control" placeholder="First Name" id="validationCustom01"
-                                name="firstname" required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom01" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" placeholder="Full name" id="validationCustom01"
+                                name="fullname" required>
+                                @error('fullname')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
-                        <div class="col-md-4">
-                            <label for="validationCustom02" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" placeholder="Last Name" id="validationCustom02"
-                                name="lastname" required>
+                        <div class="col-md-6">
+                            <label for="validationCustom05" class="form-label">Registration_no</label>
+                            <input type="text" class="form-control" placeholder="registration_no" id="validationCustom02"
+                                name="registration_no" required>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="validationCustom02" class="form-label">Surname</label>
-                            <input type="text" class="form-control" placeholder="Surname" id="validationCustom02"
-                                name="surname" required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+                            @error('registration_no')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         </div>
                     </div>
                     <div class="row m-3">
-                        <div class="col-md-4">
-                            <label for="validationCustom02" class="form-label">Email</label>
-                            <input type="text" class="form-control" placeholder="Email Address" id="validationCustom02"
-                                name="email" required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="validationCustom05" class="form-label">Contact</label>
-                            <input type="text" class="form-control" placeholder="Contact" id="validationCustom02"
-                                name="contact" required>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                            <div class="invalid-feedback">
-                                Please provide a valid District.
-                            </div>
-                        </div>
                         <div class="row mt-3 border-info">
                             <div class="col-md-4">
-                                <label for="validationCustom04" class="form-label">Gender</label>
+                                <label for="validationCustom04" class="form-label">Date Of Birth</label>
+                                <input type="date" class="form-control" placeholder="Date Of Birth"
+                                    id="validationCustom02" name="dob" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="gender" class="form-label">Gender</label>
                                 <select name="gender" class="form-select" required>
                                     <option selected disabled value="">Choose...</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                 </select>
-                                <div class="invalid-feedback">
-                                    Please select a Gender.
-                                </div>
+                                @error('gender')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             </div>
-                            <div class="ml-1 col-md-5">
+                            <div class="ml-1 col-md-4">
                                 <label for="validationCustom05" class="form-label">NIDA</label>
                                 <input type="text" class="form-control" placeholder="National Identity Number"
                                     id="validationCustom02" name="nida" required>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
-                                <div class="invalid-feedback">
-                                    Please provide a NIDA.
-                                </div>
+                                @error('nida')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -129,7 +110,7 @@
                             <select name="program" class="form-select" required>
                                 <option selected disabled value="">Choose...</option>
                                 @foreach($programs as $program)
-                                     <option value="{{$program->id}}">{{$program->name}}</option>
+                                     <option value="{{$program->id}}">{{$program->program}}</option>
                                 @endforeach
                             </select>
                             <div class="invalid-feedback">
@@ -154,9 +135,9 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <label for="validationCustom05" class="form-label">Year Of Studies</label>
+                            <label for="validationCustom05" class="form-label">Accademic Year</label>
                             <input type="number" class="form-control" placeholder="Year Of Studies"
-                                id="validationCustom02" name="yearOfstudy" required>
+                                id="validationCustom02" name="accademic_year" required>
                             <div class="valid-feedback">
                                 Looks good!
                             </div>

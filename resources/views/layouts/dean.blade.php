@@ -33,6 +33,11 @@
     @include('inc.dean_navbar')
     <div class="container">
         @yield('content')
+       
+    </div>
+   
+    <div class="shadow-sm row" style="padding-top:100%">
+        @include('inc.footer')
     </div>
 
     {{-- composer require unisharp/laravel-ckeditor --}}

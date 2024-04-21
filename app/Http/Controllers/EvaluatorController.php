@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Models\EvaluationForm;
+use App\Models\ReportEvaluation;
+use Spatie\FlareClient\Solutions\ReportSolution;
 
 class EvaluatorController extends Controller
 {
@@ -13,7 +18,8 @@ class EvaluatorController extends Controller
      */
     public function index()
     {
-        return view ('users\eveluators\index');
+        // $evaluations = ReportEvaluation::orderBy("created_at","desc")->paginate(10);
+        return view ('evaluators.index');
     }
 
     /**
@@ -23,7 +29,10 @@ class EvaluatorController extends Controller
      */
     public function create()
     {
-        //
+        $students = Student::all();
+        $courses = Course::with('programs')->get();
+        return view('evaluators.create',compact('courses','students'));
+        // return view ('eveluators.create');
     }
 
     /**
@@ -34,7 +43,34 @@ class EvaluatorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $status ='Pending';
+        $validatedData = $request->validate([
+            'question' => 'required',
+            'student' => 'required',
+            'course' => 'required',
+            'due_date' => 'required',
+            'description' => 'required',
+            // 'faculty_id' => 'required|exists:faculty,faculty_id',
+        ]);
+        // Retrieve Student information and Courses
+        $students = Student::findOrFail($request->input('student'));
+        $courses = Course::findOrFail($request->input('course'));
+
+        $evaluations = new EvaluationForm;
+        $evaluations->question=$validatedData['question'];
+        $evaluations->student= $students->fullname;
+        $evaluations->student_id= $students->id;
+        $evaluations->course=$courses->course;
+        $evaluations->course_id=$courses->id;
+        $evaluations->due_date=$validatedData['due_date'];
+        $evaluations->description=$validatedData['description'];
+        $evaluations->status=$status;
+     
+        $evaluations->save();
+
+        return redirect('/evaluators')->with('Success', 'Evaluation Added Success.');
+        
+
     }
 
     /**
@@ -45,7 +81,9 @@ class EvaluatorController extends Controller
      */
     public function show($id)
     {
-        //
+        $evaluation = ReportEvaluation::findOrFail($id);
+        return view ('/evaluator.index',['evaluator'=> $evaluation]);
+
     }
 
     /**

@@ -17,7 +17,7 @@
     <div class="col-md-12 m-2">
         <div class="form-group">
             {{Form::label('','Department Name:')}}
-            {{Form::text('name',$department->name,['class'=>'form-control','placeholder'=>'Department Name
+            {{Form::text('department',$department->department,['class'=>'form-control','placeholder'=>'Department Name
                         '])}}
         </div>
     </div>

@@ -24,6 +24,13 @@ function toggleStudentManageDropdown(event) {
     StudentsDropdown.classList.toggle("show");
 }
 
+
+function toggleEvaluationDropdown(event) {
+    event.preventDefault();
+    const evaluationDropdown = document.getElementById("evaluationDropdown");
+    evaluationDropdown.classList.toggle("show");
+}
+
 function toggleFacultyManageDropdown(event) {
     event.preventDefault();
     const FacultyDropdown = document.getElementById("FacultyDropdown");
@@ -39,4 +46,5 @@ function closeSlideMenu() {
     document.getElementById("side-menu").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
 }
+
 

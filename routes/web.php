@@ -12,10 +12,11 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\EvaluatorController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\EvaluationController;
 
 
 /*
@@ -36,11 +37,11 @@ Route::get('/',[LoginController::class,'index']);
 Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::post('/login',[LoginController::class,'login']);
 
-Route::get('/register',[RegisterController::class,'index']);
-Route::post('/register',[RegisterController::class,'register']);
+
 Route::get('/logout',[LogoutController::class,'logout']);
 
 Route::get('delete/{id}',[UserController::class,'destroy']);
+Route::get('delete/{id}',[AdminController::class,'destroy']);
 
 Route::resource('users',UserController::class);
 Route::get('account',[UserController::class,'account']);
@@ -48,26 +49,42 @@ Route::post('/users',[UserController::class,'store']);
 
 Route::group(['middleware'=>'VerifyMiddleware'], function(){
 //     // Route::view('posts',PostsController::class);
-
+// Route::get('/', [AdminController::class, 'index'])->name('index');
 });
 
-// profile
-Route::get('/profile',[UserController::class,'profile']);
+// // profile
+// Route::get('/profile',[UserController::class,'profile']);
 
-//add users
-Route::get('/add_user',[UserController::class,'create']);
+// //add users
+// Route::get('/add_user',[UserController::class,'create']);
 
 // Admin
-Route::prefix('admin')->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('index');
+Route::prefix('admin')->middleware(['auth','is_admin'])->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('index')->name('index');
+    Route::get('/listEvaluator', [AdminController::class, 'listEvaluator'])->name('listEvaluator');
+    Route::post('/listEvaluator', [UserController::class, 'store'])->name('store');
+    Route::get('/managedepartments', [AdminController::class, 'managedepartments'])->name('managedepartments');
+    Route::get('/managestudents', [AdminController::class, 'managestudents'])->name('managestudents');
+    Route::get('/managequality', [AdminController::class, 'managequality'])->name('managequality');
+    Route::post('/managestudents', [UserController::class, 'store'])->name('store');
     // Include resourceful routes for AdminController
     Route::resource('/', AdminController::class);
 });
 
+
+
 // Student 
-Route::prefix('students')->group(function () {
-    Route::get('/', [StudentController::class, 'index'])->name('index');
+Route::prefix('students')->middleware(['auth','is_student'])->group(function () {
+    Route::get('/', [StudentController::class, 'index'])->name('students.index');
+    Route::get('/student', [StudentController::class, 'student'])->name('student');
+    // Route::get('/no_student', [StudentController::class, 'index'])->name('no_student');
+    // custom route
     Route::get('/studentRegister', [StudentController::class, 'studentRegister']);
+    Route::get('/questionnaire', [StudentController::class, 'Questionnaire']);
+    Route::get('/create', [StudentController::class, 'create'])->name('students.create');
+    Route::get('/show/{id}', [StudentController::class, 'show'])->name('students.show');
+    Route::post('/show/{id}', [ResponseController::class, 'store'])->name('students.store');
+    // Route::post('/QResponses', [StudentController::class, 'QResponses'])->name('students.QResponses');
     Route::post('/studentRegister', [StudentController::class, 'store']);
     Route::post('/', [StudentController::class, 'store']);
     // Include resourceful routes for AdminController
@@ -75,23 +92,27 @@ Route::prefix('students')->group(function () {
 });
 
 // Evaluator 
-Route::prefix('evaluators')->group(function () {
+Route::prefix('evaluators')->middleware('auth')->group(function () {
     // Route for accessing the index method of EvaluatorController
     Route::get('/', [EvaluatorController::class, 'index'])->name('evaluators.index');
+    Route::get('/create', [EvaluatorController::class, 'create'])->name('create');
+    // Route::post('/create', [EvaluatorController::class, 'store'])->name('store');
+    Route::post('/store',[EvaluatorController::class,'store'])->name('evaluators.store');
+
     
     // Resourceful routes for EvaluatorController
     Route::resource('/', EvaluatorController::class);
 });
 
 // Courses 
-Route::prefix('courses')->group(function () {
+Route::prefix('courses')->middleware('auth')->group(function () {
     Route::get('/', [CourseController::class, 'index'])->name('index');
     // Include resourceful routes for AdminController
     Route::resource('courses', CourseController::class);
 });
 
 // / programs 
-Route::prefix('programs')->group(function () {
+Route::prefix('programs')->middleware(['auth'])->group(function () {
     Route::get('/', [ProgramController::class, 'index'])->name('index');
     Route::post('/', [ProgramController::class, 'store']);
     Route::get('/course_list', [ProgramController::class, 'store'])->name('programs.course_list');
@@ -110,9 +131,27 @@ Route::prefix('tasks')->group(function () {
     Route::resource('tasks', TaskController::class);
 });
 
+// / Responses 
+Route::prefix('responses')->middleware(['auth','is_qassuarance','is_admin'])->group(function () {
+    Route::get('/', [ResponseController::class, 'index'])->name('index');
+    Route::post('/student/create', [ResponseController::class, 'store'])->name('store');
+    // Include resourceful routes for AdminController
+    Route::resource('responses', ResponseController::class);
+});
+
+// Evaluations 
+Route::prefix('evaluations')->group(function () {
+    Route::get('/', [EvaluationController::class, 'index'])->name('index');
+    Route::get('/create', [EvaluationController::class, 'create'])->name('create');
+    // Route::post('/create', [EvaluatorController::class, 'store'])->name('store');
+    Route::post('/store',[EvaluationController::class,'store'])->name('evaluators.store');
+    // Include resourceful routes for AdminController
+    Route::resource('evaluations', EvaluationController::class);
+});
+
 
 // / Dean of Facult 
-Route::prefix('dean')->group(function () {
+Route::prefix('dean')->middleware('auth')->group(function () {
     Route::get('/', [DeanController::class, 'index'])->name('index');
     // Include resourceful routes for AdminController
     Route::resource('tasks', DeanController::class);
@@ -120,7 +159,7 @@ Route::prefix('dean')->group(function () {
 
 
 // / Department of Facult 
-Route::prefix('departments')->group(function () {
+Route::prefix('departments')->middleware('auth')->group(function () {
     Route::get('/', [DepartmentController::class, 'index'])->name('index');
     Route::post('/', [DepartmentController::class, 'store']);
     Route::get('/show/{id}', [DepartmentController::class, 'show']);
@@ -129,10 +168,11 @@ Route::prefix('departments')->group(function () {
     Route::resource('departments', DepartmentController::class);
 });
 
-Route::prefix('enroll')->group(function () {
+Route::prefix('enroll')->middleware('auth')->group(function () {
     Route::resource('enroll', EnrollmentController::class);
     Route::get('/create', [EnrollmentController::class ,'create'])->name('create');
     Route::post('/create', [EnrollmentController::class ,'store'])->name('store');
+    
 });
 
 

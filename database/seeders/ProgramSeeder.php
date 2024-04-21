@@ -17,24 +17,24 @@ class ProgramSeeder extends Seeder
     {
         $program = [
             [
-                'name' => 'Bsc.MICT-EDU',
+                'program' => 'Bsc.MICT-EDU',
                 'description' => 'Bachelor of Science with Education in Mathematics and ICT',
                 'department' => 'EMS',
-                'department_id' => '1',
+                'department_id' => '3',
                
             ],
             [
-                'name' => 'BSc. ITS',
+                'program' => 'BSc. ITS',
                 'description' => ' Bachelor of Science in Information Technology and Systems',
                 'department' => 'CSS',
-                'department_id' => '1',
+                'department_id' => '3',
                
             ],
             [
-                'name' => 'BSc. IEM',
+                'program' => 'BSc. IEM',
                 'description' => 'Bachelor of Science in Industrial Engineering Management',
                 'department' => 'EMS',
-                'department_id' => '1',
+                'department_id' => '3',
                
             ],
         ];

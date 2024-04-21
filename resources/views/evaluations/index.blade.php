@@ -7,12 +7,11 @@
     </div>
     <div class="col">
         <span class="textColor">
-            <a class="nav-link text-muted fs-5 " href="{{ url('#') }}">Task List</a>
+            <a class="nav-link text-muted fs-5 " href="{{ url('#') }}">Evaluation Form</a>
         </span>
     </div>
     <hr class="ml-5 mt-2 textColor">
 </div>
-{{-- course list title --}}
 {{-- course list title --}}
 <div id="user" class="ml-5">
     <div class="tab-content  mt-5">
@@ -21,23 +20,15 @@
                 <div class="card-header" style="background-color:#002E3B">
                 </div>
                 <div class="card-body">
-                    {{-- <div class="row m-2">
-                        <div class="col-md-12 d-flex justify-content-end">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item" role="presentation">
-                                    <a href="#adduser" type="button" data-toggle="modal" data-target="#exampleModal">
-                                        <i class="bi bi-plus-circle-dotted fs-5 mr-2 text-danger"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> --}}
                     <div class="row">
                         <div class="col-md-12 col-sm-6 col-xm-12 ">
                             <table id="example" class="display table table-bordered" style="width:100%">
                                 <thead class="table-muted">
                                     <tr class="text-muted" style="text-transform: capitalize;font-size:14px;">
                                         <th>S/N</th>
-                                        <th>Task</th>
+                                        <th>Question</th>
+                                        <th>Course</th>
+                                        <th>Code</th>
                                         <th>Due Date</th>
                                         <th>Status</th>
                                         <th>Actions</th>
@@ -46,8 +37,10 @@
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
+                                        <td>How the teaching style of list course ?</td>
+                                        <td>Development Perspective </td>
+                                        <td>DST 100</td>
+                                        <td>02/03/2024</td>
                                         <td class="text-info">panding</td>
                                         <td>
                                             <span>
@@ -61,7 +54,7 @@
                                                     <ul class="dropdown-menu">
                                                         <li>
                                                             <a class="dropdown-item" href="#adduser" type="button" data-toggle="modal" data-target="#exampleModal"><i class="bi bi-check2-circle text-muted fs-6 m-3"></i>View
-                                                                Task</a>
+                                                                Question</a>
                                                         </li>
                                                         <li>
                                                             <a class="dropdown-item" href="#addusers" type="button" data-toggle="modal" data-target="#exampleModal03"><i class="bi bi-check2-circle text-muted fs-6 m-3"></i>View
@@ -100,7 +93,7 @@
                 <div class="list-group">
                     <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Task Name</h5>
+                            <h5 class="mb-1">Question</h5>
                             <small>3 days ago</small>
                         </div>
                         <p class="mb-1">Some placeholder content in a paragraph.</p>

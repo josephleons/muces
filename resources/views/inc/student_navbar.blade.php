@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-expand-lg navbar-light text-dark bg-white shadow-sm mb-5 bg-body rounded">
+<nav class="navbar navbar-inverse navbar-expand-md navbar-light text-dark bg-white shadow-sm mb-5 bg-body rounded ">
     <div class="mx-5"></div>
     <div class="navbar-header">
         <span class="open-slide">
@@ -21,7 +21,7 @@
     </div>
 
     @if (Auth::guest())
-    <ul class="navbar-nav text-capitalize">
+    <ul class="navbar-nav text-capitalize mr-5 ">
         <li class="nav-item mt-2">
             <i class="bi bi-box-arrow-left text-danger"></i>
         </li>
@@ -34,11 +34,11 @@
         </li>
         @endif
         @if (Auth::check())
-        <li class="nav-item dropdown text-white" style="list-style:none" style="margin-right:50px;">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+        <li class="nav-item dropdown text-white text-capitalize" style="list-style:none" style="margin-right:150px;">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"data-bs-display="static"  href="#" role="button" 
                 aria-expanded="false">
             </a>
-            <ul class="dropdown-menu" style="text-transform:lowercase">
+            <ul class="dropdown-menu">
                 <a class="dropdown-item" href="{{ url('#') }}">Manage Account<i
                         class="bi bi-person-square ml-5"></i></a>
                 <a class="dropdown-item mt-1" href="#">Setting<i class="bi bi-sliders ml-5"></i></a>
@@ -48,7 +48,6 @@
             </ul>
         </li>
     </ul>
-    </div>
 </nav>
 <div id="side-menu" class="side-nav text-white" style="background-color: #002E3B">
     <img style="width:20px; height:20px" class="shadow rounded-circle mx-2" src="{{ url('assets/images/mucems.jpg') }}">
@@ -60,9 +59,10 @@
                 class="bi bi-check2-circle text-muted fs-6 m-3"></i>Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class='nav-link text-white  text-muted' href="{{ url('/tasks') }}"><i
-                class="bi bi-check2-circle text-muted fs-6 m-3"></i>Task</a>
+                <a class='nav-link text-white  text-muted' href="{{ url('/students/questionnaire') }}"><i
+                class="bi bi-check2-circle text-muted fs-6 m-3"></i>Questionnaire</a>
             </li>
+            
             @if(!Auth::user()->student)
                     <li class="nav-item">
                         <a class='nav-link text-white text-muted' href="{{ url('/students/studentRegister') }}"><i

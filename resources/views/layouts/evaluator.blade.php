@@ -22,7 +22,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" type="text/css" rel="stylesheet" >
     <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css" type="text/css"  rel="stylesheet">  
     <title>{{config('app.name','MUCES')}}</title>
-    <link rel="shortcut icon" style="width:50px" class="shadow rounded-circle m-3" href="{{url('assets/images/favicon.png')}}">
+    <link rel="shortcut icon" style="width:50px" class="shadow rounded-circle m-3" href="{{url('assets/images//mucems.jpg')}}">
 </head>
 <body class="bodyColor">
     @include('inc.evaluat_navbar')

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EvaluationForm;
 use App\Models\Program;
+use App\Models\Response;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -16,13 +18,61 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function student (){
+        return view('students.student');
+     }
+    // public function index()
+    // {
+    //     $userId = Auth::id();
+    //     // Fetch the student associated with the logged-in user
+    //     $student =Student::where('user_id',$userId)->first();
+    //     // Check if the user is associated with a student
+    //     if ($student) {
+    //         $program = $student->program;
+    //         // Now you have the program data and you can access its related students
+    //         $students = $program->students;
+    //         return view('students.index', compact('program', 'students'));
+    //     } else {
+    //         // Handle the case if the logged-in user is not associated with a student
+    //         return redirect()->back()->with('error', 'You are not associated with a student.');
+    //     }
+    //     // return view('students.index', compact('program', 'students'));
+
+
+
+    // }
+    
+    
+
     public function index()
     {
-        $user_id= Auth::id();
+        $userId = auth()->id();
+        $student = Student::where('user_id', $userId)->first();
+    
+        if ($student) {
+            $program = $student->program; // Access program data
+            return view('students.index', compact('student', 'program'));
+        } else {
+            return view('students.no_student')->with('error', 'Student not found.');
+        }
+    }
+    
+    
+    
+    public function Questionnaire ()
+    {
+        $userId = Auth::id();
+        $student =Student::where('user_id',$userId)->first();
+        // if student found get they Questionnaire
+        if($student){
+             $evaluationForm = $student->evaluationForm;
+             return view ("students.questionnaire",compact('student','evaluationForm'));
+        }else{
+             // Handle the case if the logged-in user is not associated with a student
+             return redirect()->back()->with('error', 'You are not associated with a student.');
+        }
 
-        // Fetch the corresponding student record from the database based on the user's ID
-        $student = Student::where('user_id', $user_id)->first();
-        return view('students.index',compact('student'));
     }
 
     // custom function student registerArgumentsSet()
@@ -40,7 +90,13 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view ('students.create');
+    }
+    //store the evaluation response to responses table 
+    public function QResponses(Request $request)
+    {
+        
+
     }
 
     /**
@@ -52,13 +108,11 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'surname' => 'required',
+            'fullname' => 'required',
             'gender' => 'required',
-            'email' => 'required',
-            'contact' => 'required',
-            'yearOfstudy' => 'required',
+            'dob' => 'required',
+            'registration_no' => 'required',
+            'accademic_year' => 'required',
             'nida' => 'required',
             'program' => 'required',
             'semister' => 'required',
@@ -69,16 +123,14 @@ class StudentController extends Controller
             
             // CreateStudent instance 
             $student = new Student;
-            $student->firstname=$validatedData['firstname'];
-            $student->lastname=$validatedData['lastname'];
-            $student->surname=$validatedData['surname'];
+            $student->fullname=$validatedData['fullname'];
             $student->gender=$validatedData['gender'];
-            $student->email=$validatedData['email'];
-            $student->contact=$validatedData['contact'];
-            $student->yearOfstudy=$validatedData['yearOfstudy'];
+            $student->dob=$validatedData['dob'];
+            $student->registration_no=$validatedData['registration_no'];
+            $student->accademic_year=$validatedData['accademic_year'];
             $student->nida=$validatedData['nida'];
             $student->semister=$validatedData['semister'];
-            $student->program = $programs->name;
+            $student->program = $programs->program;
              // Assign the program ID to the students's  field
             $student->program_id = $programs->id;
             //assign student user_id column from user id table
@@ -95,7 +147,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $question = EvaluationForm::findOrFail($id);
+        return view ('students.create',['question'=> $question]);
     }
 
     /**
@@ -106,7 +159,7 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+       
     }
 
     /**

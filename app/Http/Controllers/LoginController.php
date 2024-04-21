@@ -26,15 +26,15 @@ class LoginController extends Controller
                 return redirect()->intended('/admin');
             
             } elseif ($user->is_student()) {
-                return redirect()->intended('/students');
+                return redirect()->intended('/students/student');
             
-            } elseif ($user->is_evaluator()) {
-                return redirect()->intended('/evaluators');
+            } elseif ($user->is_qualityassuarance()) {
+                return redirect()->intended('/responses');
             
             }elseif ($user->is_dean()) {
                 return redirect()->intended('/dean');
             
-            }elseif ($user->is_guest()) {
+            }elseif ($user->is_student()) {
                 return redirect()->intended('/guest');
             
             }

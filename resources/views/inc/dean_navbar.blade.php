@@ -1,4 +1,5 @@
-<nav class="navbar navbar-inverse navbar-expand-lg navbar-light text-dark bg-white shadow-sm mb-5 bg-body rounded">
+<nav class="navbar navbar-inverse navbar-expand-md navbar-light text-dark bg-white shadow-sm mb-5 bg-body rounded">
+    <div class="container-fluid">
     <div class="mx-5"></div>
     <div class="navbar-header">
         <span class="open-slide">
@@ -20,7 +21,7 @@
         </ul>
     </div>
     @if (Auth::guest())
-    <ul class="navbar-nav text-capitalize">
+    <ul class="navbar-nav text-capitalize me-auto mb-2 mb-lg-0">
         <li class="nav-item mt-2">
             <i class="bi bi-box-arrow-left text-danger"></i>
         </li>
@@ -28,7 +29,7 @@
             <a class="nav-link active" aria-current="page" href="{{ '/login'}}">Login</a>
         </li>
         @else
-        <li class="nav-item text-capitalize textColor" style="list-style:none">
+        <li class="nav-item textColor" style="list-style:none">
             {{ Auth::user()->username }}
         </li>
         @endif
@@ -37,9 +38,11 @@
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false">
             </a>
-            <ul class="dropdown-menu" style="text-transform:lowercase">
+            <ul class="dropdown-menu">
                 <a class="dropdown-item" href="{{ url('#') }}">Manage Account<i
-                        class="bi bi-person-square ml-5"></i></a>
+                    class="bi bi-person-square ml-5"></i></a>
+                    <a class="dropdown-item" href="{{ url('#') }}">Settings<i
+                            class="bi bi-person-square ml-5"></i></a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item mt-1" href="{{ '/logout' }}">Logout<i class="bi bi-box-arrow-left ml-5"></i></a>
                 @endif
@@ -48,9 +51,11 @@
     </ul>
     </div>
 </nav>
+
 <div id="side-menu" class="side-nav text-white" style="background-color: #002E3B">
     <img style="width:20px; height:20px" class="shadow rounded-circle mx-2" src="{{ url('assets/images/mucems.jpg') }}">
     <span class="fs-6">{{('MU-CEMS')}}</span>
+    <hr class="my-4">
     <ul class="nav navbar-nav" style="text-transform: capitalizes">
         <a href="#" class="btn-close btn-close-white fs-5" onclick="closeSlideMenu()"></a>
         </hr>
@@ -63,15 +68,6 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item">
-            <a class='nav-link text-white text-muted' href="{{ url('#') }}" onclick="toggleStudentManageDropdown(event)">
-                <i class="bi bi-person-workspace text-muted fs-6 m-3"></i>Manage Student</a>
-                <ul id="StudentsDropdown" class="nav navbar-nav" style="text-transform: capitalize">
-                <li class="nav-item ml-4"><a class='nav-link text-muted text-white ml-4 fs-6' href="{{ url('#') }}">Program Registration
-                </a></li>
-                <li class="nav-item ml-4"><a class='nav-link text-muted text-white ml-4 fs-6'
-                href="{{ url('#') }}">Course Registration</a></li>
-            </ul>
-        </li>
+       
     </ul>
 </div>

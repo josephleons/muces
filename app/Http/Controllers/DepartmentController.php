@@ -41,7 +41,7 @@ class DepartmentController extends Controller
     {
     
         $validatedData = $request->validate([
-            'name' => 'required',
+            'deparment' => 'required',
             'email' => 'required',
             'contact' => 'required',
             'description' => 'required',
@@ -52,11 +52,11 @@ class DepartmentController extends Controller
           
             
             $department = new Department;
-            $department->name=$validatedData['name'];
+            $department->department=$validatedData['deparment'];
             $department->email=$validatedData['email'];
             $department->contact=$validatedData['contact'];
             $department->description=$validatedData['description'];
-            $department->faculty = $faculty->name;
+            $department->faculty = $faculty->faculty;
              // Assign the faculty ID to the department's faculty_id field
             $department->faculty_id = $faculty->id;
             $department->save();
@@ -102,7 +102,7 @@ class DepartmentController extends Controller
     {
         $department = Department::find($id);
         // Update the existing fields
-        $department->name = $request->input('name');
+        $department->department = $request->input('department');
         $department->email = $request->input('email');
         $department->contact = $request->input('contact');
         $department->description = $request->input('description');
@@ -120,6 +120,10 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $department = new Department();
+        $result=$department->find($id);
+        $result->delete();
+
+        return redirect('/admin/manageuser')->with('success' ,'Department Removed');
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class CheckLogin
+class CheckAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,12 @@ class CheckLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(session()->missing('LOGGED_IN')){
-            echo "your not logged";
-        }
-        return $next($request);
+       if(!auth()->check() || !auth()->user()->usertype == 'admin'){
+            abort(401);
+       }
+       
+      
+       return $next($request);
     }
+
 }
