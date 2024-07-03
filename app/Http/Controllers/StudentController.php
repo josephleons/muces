@@ -62,17 +62,21 @@ class StudentController extends Controller
     
     public function Questionnaire ()
     {
-        $userId = Auth::id();
-        $student =Student::where('user_id',$userId)->first();
-        // if student found get they Questionnaire
-        if($student){
-             $evaluationForm = $student->evaluationForm;
-             return view ("students.questionnaire",compact('student','evaluationForm'));
-        }else{
-             // Handle the case if the logged-in user is not associated with a student
-             return redirect()->back()->with('error', 'You are not associated with a student.');
-        }
+        // $userId = Auth::id();
+        // $student = Student::where('user_id', $userId)->first();
+        // // if student found get they Questionnaire
+        // if($student){
+        //      $evaluationForm = $student->evaluationForm;
+        //     //  dd($evaluationForm);
+        //      return view ("students.questionnaire", compact('student','evaluationForm'));
+        // }else{
+        //      // Handle the case if the logged-in user is not associated with a student
+        //      return redirect()->back()->with('error', 'You are not associated with a student.');
+        // }
 
+        // above code was to retrieve specific student and its related questionnaire be assigned
+        $questionnaires = EvaluationForm::all();
+        return view ("students.questionnaire",['questionnaires'=>$questionnaires]);
     }
 
     // custom function student registerArgumentsSet()
@@ -115,12 +119,10 @@ class StudentController extends Controller
             'accademic_year' => 'required',
             'nida' => 'required',
             'program' => 'required',
-            'semister' => 'required',
             // 'faculty_id' => 'required|exists:faculty,faculty_id',
         ]);
         // Retrieve faculty information based on the selected faculty ID
             $programs = Program::findOrFail($request->input('program'));
-            
             // CreateStudent instance 
             $student = new Student;
             $student->fullname=$validatedData['fullname'];
@@ -129,7 +131,6 @@ class StudentController extends Controller
             $student->registration_no=$validatedData['registration_no'];
             $student->accademic_year=$validatedData['accademic_year'];
             $student->nida=$validatedData['nida'];
-            $student->semister=$validatedData['semister'];
             $student->program = $programs->program;
              // Assign the program ID to the students's  field
             $student->program_id = $programs->id;
@@ -148,7 +149,7 @@ class StudentController extends Controller
     public function show($id)
     {
         $question = EvaluationForm::findOrFail($id);
-        return view ('students.create',['question'=> $question]);
+        return view('students.create',['question'=> $question]);
     }
 
     /**

@@ -159,7 +159,7 @@ Route::prefix('dean')->middleware('auth')->group(function () {
 
 
 // / Department of Facult 
-Route::prefix('departments')->middleware('auth')->group(function () {
+Route::prefix('departments')->middleware(['auth','is_qassuarance'])->group(function () {
     Route::get('/', [DepartmentController::class, 'index'])->name('index');
     Route::post('/', [DepartmentController::class, 'store']);
     Route::get('/show/{id}', [DepartmentController::class, 'show']);

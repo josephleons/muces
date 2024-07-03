@@ -20,7 +20,7 @@ class Student extends Model
     
     public function courses()
     {
-        return $this->belongsToMany('App\Models\Course');
+        return $this->belongsToMany(Course::class);
     }
 
     public function evaluationForm()

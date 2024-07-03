@@ -30,7 +30,6 @@ class EvaluationController extends Controller
         $courses = Course::with('programs')->get();
         return view('evaluations.create',compact('courses','students'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -42,29 +41,29 @@ class EvaluationController extends Controller
         $status ='Pending';
         $validatedData = $request->validate([
             'question' => 'required',
-            'student' => 'required',
             'course' => 'required',
             'due_date' => 'required',
-            'description' => 'required',
+            // 'description' => 'required',
             // 'faculty_id' => 'required|exists:faculty,faculty_id',
         ]);
         // Retrieve Student information and Courses
-        $students = Student::findOrFail($request->input('student'));
+        // $students = Student::findOrFail($request->input('student'));
         $courses = Course::findOrFail($request->input('course'));
-
         $evaluations = new EvaluationForm;
         $evaluations->question=$validatedData['question'];
-        $evaluations->student= $students->fullname;
-        $evaluations->student_id= $students->id;
-        $evaluations->course=$courses->course;
-        $evaluations->course_id=$courses->id;
+        // $evaluations->student= $students->fullname;
+        // $evaluations->student_id= $students->id;
+        $evaluations->course=$courses->course_name;
+        // $evaluations->course_id=$courses->id;
         $evaluations->due_date=$validatedData['due_date'];
-        $evaluations->description=$validatedData['description'];
+        // $evaluations->description=$validatedData['description'];
         $evaluations->status=$status;
      
         $evaluations->save();
+        // Attach the student to the evaluation in the junction table
+        // $evaluations->students()->attach($students->id);
 
-        return redirect('/evaluations')->with('Success', 'Evaluation Added Success.');
+        return redirect('/admin')->with('Success', 'Evaluation Added Success.');
         
     }
 

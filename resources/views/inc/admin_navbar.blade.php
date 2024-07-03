@@ -14,13 +14,13 @@
     <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
             <li class="nav-item fs-5">
-                <h5 class="textColor  mx-3">Mzumbe Course
-                    Evaluation system</h5>
+                <h5 class="textColor mx-3">Mzumbe Course
+                Evaluation system</h5>
             </li>
         </ul>
     </div>
     @if (Auth::guest())
-    <ul class="navbar-nav text-capitalize">
+    <ul class="navbar-nav">
         <li class="nav-item mt-2">
             <i class="bi bi-box-arrow-left text-danger"></i>
         </li>
@@ -29,26 +29,25 @@
         </li>
         @else
         <li class="nav-item textColor" style="list-style:none">
-            {{ Auth::user()->username }}
+            {{ Auth::user()->username}}
         </li>
         @endif
         @if (Auth::check())
-        <li class="nav-item dropdown text-white" style="list-style:none" style="margin-right:50px;">
+        <li class="nav-item dropdown text-white" style="list-style:none;margin-right:10%">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false">
             </a>
-            <ul class="dropdown-menu">
-                <a class="dropdown-item" href="{{ url('#') }}">Manage Account<i
-                        class="bi bi-person-square ml-5"></i></a>
-                <a class="dropdown-item mt-1" href="#">Setting<i class="bi bi-sliders ml-5"></i></a>
+            <ul class="dropdown-menu text-muted">
+                <a class="dropdown-item" href="{{url('#') }}">Profile<i class="bi bi-person-square ml-5 fs-6"></i></a>
+                <a class="dropdown-item mt-1" href="#">Setting<i class="bi bi-sliders ml-5 fs-6"></i></a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item mt-1" href="{{ '/logout' }}">Logout<i class="bi bi-box-arrow-left ml-5"></i></a>
+                <a class="dropdown-item mt-1" href="{{ '/logout' }}">Logout<i class="bi bi-box-arrow-left ml-5 fs-6"></i></a>
                 @endif
             </ul>
         </li>
     </ul>
     </div>
-</nav>
+    </nav>
     <div id="side-menu" class="side-nav text-white" style="background-color: #002E3B">
     <img style="width:20px; height:20px" class="shadow rounded-circle mx-2" src="{{ url('assets/images/mucems.jpg') }}">
     <span class="fs-6">{{('MU-CEMS')}}</span>
@@ -57,19 +56,11 @@
         <a href="#" class="btn-close btn-close-white fs-5" onclick="closeSlideMenu()"></a>
         </hr>
         <li class="nav-item">
-            <a class='nav-link text-white  text-muted' href="{{ url('/admin/managequality') }}"><i
-                    class="bi bi-check2-circle text-muted fs-6 m-3"></i>Manage Quality Assuarance</a>
-        </li>
-        <li class="nav-item">
-            <a class='nav-link text-white  text-muted' href="{{ url('/evaluators/create') }}"> <i
-                    class="bi bi-pencil-square text-muted fs-6 m-3"></i>Evaluation</a>
-        </li>
-        <li class="nav-item">
             <a class='nav-link text-white text-muted' href="{{ url('#') }}" onclick="toggleEvaluatorDropdown(event)">
                 <i class="bi bi-people text-muted fs-6 m-3"></i>Manage user</a>
             <ul id="evaluatorDropdown" class="nav navbar-nav" style="text-transform: capitalize">
                 <li class="nav-item ml-4"><a class='nav-link text-muted text-white ml-4 fs-6'
-                        href="{{ url('/admin/listEvaluator') }}">users</a></li>
+                    href="{{ url('/admin/listEvaluator') }}">users</a></li>
             </ul>
         </li>
         <li class="nav-item">
@@ -78,7 +69,7 @@
                 <i class="bi bi-person-workspace text-muted fs-6 m-3"></i>Manage Faculty</a>
             <ul id="FacultyDropdown" class="nav navbar-nav" style="text-transform: capitalize">
                 <li class="nav-item ml-4"><a class='nav-link text-muted text-white ml-4 fs-6'
-                        href="{{ url('/admin/managedepartments') }}">Department
+                    href="{{ url('/admin/managedepartments') }}">Department
                     </a>
                 </li>
             </ul>
@@ -88,7 +79,7 @@
                 <i class="bi bi-people text-muted fs-6 m-3"></i>Manage Student</a>
             <ul id="userDropdown" class="nav navbar-nav" style="text-transform: capitalize">
                 <li class="nav-item ml-4"><a class='nav-link text-muted text-white ml-4 fs-6'
-                        href="{{ url('/admin/managestudents') }}">Students</a></li>
+                    href="{{ url('/admin/managestudents') }}">Students</a></li>
             </ul>
         </li>
     </ul>

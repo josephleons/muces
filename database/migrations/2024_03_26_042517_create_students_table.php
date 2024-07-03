@@ -16,9 +16,10 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('fullname');
+            $table->string('gender');
+            $table->string('dob');
             $table->string('registration_no');
             $table->string('accademic_year');
-            $table->string('semister');
             $table->string('nida');
             $table->unsignedBigInteger('program_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();

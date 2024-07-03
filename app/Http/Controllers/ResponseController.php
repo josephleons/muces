@@ -44,18 +44,19 @@ class ResponseController extends Controller
     {
         $validatedData = $request->validate([
             'response' => 'required|string',
-            'status' => 'required',
-            'evaluation_form_id' => 'required'
+            'status' => 'required|string',
+            'question_id' => 'required|string'
         ]);
 
             $response = new ResponseQuestion;
             $response->status = $validatedData['status'];
-             $response->response = $validatedData['response'];
-            $response->evaluation_form_id =$validatedData['evaluation_form_id'];
+            $response->response = $validatedData['response'];
+            $response->questionnaire_question_id =$validatedData['question_id'];
+            $response->evaluation_form_id =$validatedData['question_id'];
            
             // submit data
             $response->save();
-            return redirect()->route('students.index')->with('success', 'Students created successfully.');
+            return redirect()->route('students.index')->with('success', 'Response created successfully.');
     }
 
     /**

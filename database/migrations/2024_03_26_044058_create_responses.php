@@ -16,12 +16,22 @@ return new class extends Migration
         Schema::create('response_questions', function (Blueprint $table) {
             $table->id();
             $table->string('response');
+            $table->string('student');
+            $table->string('lecturer');
+            $table->string('program');
+            $table->string('course');
             $table->string('status');
-            $table->unsignedBigInteger('evaluation_form_id')->nullable();
+            $table->unsignedBigInteger('questionnaire_question_id')->nullable();
+            $table->unsignedBigInteger('program_id')->nullable();
+            $table->unsignedBigInteger('course_id')->nullable();
+            $table->unsignedBigInteger('lecturer_id')->nullable();
             $table->timestamps();
-
-            $table->foreign('evaluation_form_id')->references('id')->on('evaluation_forms');
+            $table->foreign('questionnaire_question_id')->references('id')->on('questionnaire');
+            $table->foreign('program_id')->references('id')->on('programs');
+            $table->foreign('course_id')->references('id')->on('courses');
+            $table->foreign('lecturer_id')->references('id')->on('lecturer');
         });
+    
     }
 
     /**

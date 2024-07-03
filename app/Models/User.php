@@ -37,7 +37,7 @@ class User extends Authenticatable
 
     // check admin roles
     public function is_admin(){
-        return $this->users()->where('usertype','Admin')->exists();
+        return $this->users()->where('usertype','admin')->exists();
     }
 //    check student roles
     public function is_student(){
@@ -47,7 +47,7 @@ class User extends Authenticatable
         return $this->users()->where('usertype','Q_assuarance')->exists();
     }
     public function is_dean(){
-        return $this->users()->where('usertype','Dean')->exists();
+        return $this->users()->where('usertype','dean')->exists();
     }
     public function is_guest(){
         return $this->users()->where('usertype','guest')->exists();
@@ -61,7 +61,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
     
     public function users(){
         return $this->hasMany(User::class,'id');
@@ -71,8 +70,5 @@ class User extends Authenticatable
         return $this->hasOne(Student::class);
     }
     
-
-
-
-    
+ 
 }

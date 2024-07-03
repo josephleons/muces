@@ -6,44 +6,43 @@
     </div>
     <hr class="ml-5 mt-2 textColor">
 </div>
-<div class="card p-1" style="margin-left:120px">
+<div class="card p-1" style="margin-left:10px">
 <div class="row lead align-items-center ml-5">
             <div class="col-12 col-sm-12 col-xm-12 ">
                 <table id="example" class="display table table-bordereless" style="width:100%">
                     <thead class="table-muted">
                         <tr class="text-muted text-capitalize fs-6">
-                            <th>S/N</th>
+                            <th>Registration Number</th>
                             <th>Student Name</th>
                             <th>Program</th>
-                            <th>Department</th>
                             <th>Semister</th>
-                            <th>Accademic Year</th>
+                            <th>Accademic year</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody class="text-capitalize">
+                        @foreach ($studentprogram as $students)
                         <tr class="text-muted fs-5">
-                            <td>1</td>
-                            <td>{{$student->fullname}}</td>
-                            {{-- <td>{{$programs->program}}</td>
-                            <td>{{$programs->department}}</td> --}}
-                            <td>{{$student->semister}}</td>
-                            <td>{{$student->yearOfstudy}}</td>
+                            <td>{{$students->registration_no}}</td>
+                            <td>{{$students->fullname}}</td>
+                            <td>{{$students->program}}</td>
+                          {{-- @foreach ($programs as $program)
+                            <td>{{$program->program}}</td>
+                          @endforeach --}}
+                            <td>{{$students->semister}}</td>
+                            <td>{{$students->accademic_year}}</td>
+                           
                             <td>
                                 <span>
                                     <div class="btn-group">
                                         <button class="text-white btn btn-default" type="button" style="background-color:#FD876D">
                                             Action
                                         </button>
-                                        <button type="button"
-                                            class="btn btn-sm btn-default dropdown-toggle dropdown-toggle-split"
-                                            data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#FD876D">
-                                            <span class="visually-hidden">Toggle Dropdown</span>
-                                        </button>
                                     </div>
                                 </span>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -2,46 +2,44 @@
 <html lang="{{'confi-langate'}}">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {{-- Bootstrap icon --}}
+  <link rel="stylesheet" href="{{url('bootstrap-icons/font/bootstrap-icons.css')}}">
+  <link rel="stylesheet" href="{{url('bootstrap-icons/bootstrap-icons.svg')}}">
+  {{-- Boot v5 --}}
 
-    <link rel="stylesheet" href="{{url('bootstrap-icons/font/bootstrap-icons.css')}}">
-    <link rel="stylesheet" href="{{url('bootstrap-icons/bootstrap-icons.svg')}}">
-    {{-- Boot v5 --}}
-    {{--
-    <link rel="stylesheet" href="{{url('assets/css/bootstrap.css')}}"> --}}
-    <link rel="stylesheet" href="{{url('bootstrap/dist/js/bootstrap.min.js')}}">
-    {{-- icons --}}
-    <link rel="stylesheet" href="{{url('assets/css/all.css')}}">
+  <link rel="stylesheet" href="{{url('assets/css/bootstrap.css')}}">
+  <link rel="stylesheet" href="{{url('bootstrap/dist/js/bootstrap.min.js')}}">
+  {{-- Fontawesome icons --}}
+  <link rel="stylesheet" href="{{url('assets/css/all.css')}}">
 
-    {{-- custom style cssclear --}}
-    <link rel="stylesheet" href="{{url('assets/side.css')}}" />
-    <link rel="stylesheet" href="{{url('assets/css/custom.css')}}">
-    {{-- Bootstrap 4 --}}
-    <link rel="stylesheet" href="{{url('bootstrap/dist/css/bootstrap.min.css')}}">
+  {{-- custom style cssclear --}}
+  <link rel="stylesheet" href="{{url('assets/side.css')}}" />
+  <link rel="stylesheet" href="{{url('assets/css/custom.css')}}">
+  {{-- Bootstrap 4 --}}
+  <link rel="stylesheet" href="{{url('bootstrap/dist/css/bootstrap.min.css')}}">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" type="text/css"
-        rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css" type="text/css" rel="stylesheet">
-    <title>{{config('app.name','JOBSEK')}}</title>
-    <link rel="shortcut icon" style="width:50px" class="shadow rounded-circle m-3"
-        href="{{url('assets/images/mucems.jpg')}}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" type="text/css"
+    rel="stylesheet">
+  <link href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" type="text/css" rel="stylesheet">
+  <title>{{config('app.name','MUCES')}}</title>
+  <link rel="shortcut icon" style="width:50px" class="shadow rounded-circle m-3"
+    href="{{url('assets/images/mucems.jpg')}}">
 </head>
 
 <body class="bodyColor">
     @include('inc.admin_navbar')
-    <div class="container">
+      <div class="container-fluid">
+        
         @yield('content')
     </div>
-
     {{-- composer require unisharp/laravel-ckeditor --}}
     <script src="{{url('ckeditor4/ckeditor.js')}}"></script>
     <script>
         CKEDITOR.replace('ckeditor');
     </script>
-
-
     <script src="{{url('jquery/dist/jquery.slim.min.js')}}"></script>
     <script src="{{url('assets/js/popper.min.js')}}"></script>
     <script src="{{url('assets/js/bootstrap.min.js')}}"></script>
@@ -57,6 +55,6 @@
         $('#example').DataTable();
       } );
     </script>
+    @include('inc.footer')
 </body>
-
 </html>

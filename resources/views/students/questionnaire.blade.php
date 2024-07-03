@@ -11,29 +11,30 @@
                         <div class="col-md-12 col-sm-6 col-xm-12 ">
                             <table id="example" class="display table table-bordered" style="width:100%">
                                 <thead class="table-muted">
-                                    <tr class="text-muted" style="text-transform: capitalize;font-size:14px;">
+                                    <tr class="text-muted" style="text-transform:capitalize;font-size:14px;">
                                         <th>S/N</th>
-                                        <th>AssignedTo</th>
-                                        <th>Question</th>
-                                        <th>Code</th>
+                                        <th>Questionnaire Type</th>
+                                        <th>Course Name</th>
                                         <th>Due Date</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($student->evaluationForm as $evaluation)
+                                    @if($questionnaires->isEmpty())
+                                      <small>No available questionnaire</small>
+                                    @else
+                                    @foreach($questionnaires as $questionnaire)
                                     <tr>
-                                        <td>{{$evaluation->id}}</td>
-                                        <td>{{$student->fullname}}</td>
-                                        <td>{{$evaluation->question}}</td>
-                                        <td>{{$evaluation->course}}</td>
-                                        <td>{{$evaluation->due_date}}</td>
-                                        <td class="text-info">{{$evaluation->status}}</td>
+                                        <td>{{$questionnaire->id}}</td>
+                                        <td>{{$questionnaire->question}}</td>
+                                        <td>{{$questionnaire->course}}</td>
+                                        <td>{{$questionnaire->due_date}}</td>
+                                        <td class="text-warning">{{$questionnaire->status}}</td>
                                         <td>
                                             <span>
                                                 <div class="btn-group">
-                                                    <a class="dropdown-item" href="{{url('students/show/'.$evaluation->id)}}"" type="button">
+                                                    <a class="dropdown-item" href="{{url('students/show/'.$questionnaire->id)}}" type="button">
                                                         <i class="bi bi-view-list text-muted fs-6 m-3"></i>add progress
                                                     </a>
                                                 </div>
@@ -41,6 +42,7 @@
                                         </td>
                                     </tr>
                                     @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

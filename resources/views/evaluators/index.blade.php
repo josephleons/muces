@@ -1,6 +1,6 @@
 @extends('layouts.evaluator')
 @section('content')
- {{-- course list title --}}
+{{-- course list title --}}
 <div class="row align-items-center ml-5">
     <div class="col-auto">
         <i class="bi bi-three-dots-vertical textColor"></i>
@@ -17,8 +17,8 @@
     <div class="tab-content  mt-5">
         <div class="tab-pane active" id="user" role="tabpanel" aria-labelledby="user-tab">
             <div class="card">
-                <div class="card-header"style="background-color:#002E3B">
-                     <div class="row m-2">
+                <div class="card-header" style="background-color:#002E3B">
+                    <div class="row m-2">
                         <div class="col-md-12 d-flex justify-content-end">
                             <ul class="nav nav-tabs">
                                 <li class="nav-item" role="presentation">
@@ -45,7 +45,7 @@
                                 </thead>
                                 <tbody>
                                     @if($evaluators-> isEmpty())
-                                        <small>No Evaluations Data Available </small>
+                                    <small>No Evaluations Data Available </small>
                                     @else
                                     @foreach($evaluations as $evaluation)
                                     <tr>
@@ -57,20 +57,30 @@
                                         <td>
                                             <span>
                                                 <div class="btn-group">
-                                                    <button class="text-white btn btn-default" type="button" style="background-color:#FD876D">
+                                                    <button class="text-white btn btn-default" type="button"
+                                                        style="background-color:#FD876D">
                                                         Action
                                                     </button>
                                                     <button type="button"
                                                         class="btn btn-sm btn-default dropdown-toggle dropdown-toggle-split"
-                                                        data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#FD876D">
+                                                        data-bs-toggle="dropdown" aria-expanded="false"
+                                                        style="background-color:#FD876D">
                                                         <span class="visually-hidden">Toggle Dropdown</span>
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         <li>
-                                                            <a class="dropdown-item" href="{{'/evaluators/index'.$evaluation->id}}" type="button" data-toggle="modal" data-target="#exampleModal02" ><i class="bi bi-check2-circle text-muted fs-6 m-3"></i>View Questionnaire</a>
+                                                            <a class="dropdown-item"
+                                                                href="{{'/evaluators/index'.$evaluation->id}}"
+                                                                type="button" data-toggle="modal"
+                                                                data-target="#exampleModal02"><i
+                                                                    class="bi bi-check2-circle text-muted fs-6 m-3"></i>View
+                                                                Questionnaire</a>
                                                         </li>
                                                         <li>
-                                                            <a class="dropdown-item" href="#addusers" type="button" data-toggle="modal" data-target="#exampleModal03"><i class="bi bi-check2-circle text-muted fs-6 m-3"></i>New Progress</a>
+                                                            <a class="dropdown-item" href="#addusers" type="button"
+                                                                data-toggle="modal" data-target="#exampleModal03"><i
+                                                                    class="bi bi-check2-circle text-muted fs-6 m-3"></i>New
+                                                                Progress</a>
                                                         </li>
                                                         <li>
                                                             <hr class="dropdown-divider">
@@ -91,7 +101,7 @@
         </div>
     </div>
 </div>
-{{-- Progress Model  --}}
+{{-- Progress Model --}}
 <div class="modal fade" id="exampleModal03" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -104,7 +114,7 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-4">
-                       <div class="row">
+                        <div class="row">
                             <div class="col-12">
                                 {{Form::label('Student','Student')}}
                                 <div class="form-group">
@@ -132,10 +142,10 @@
                             <div class="col-12">
                                 {{Form::label('Status','Status')}}
                                 <div class="form-group">
-                                  <button class="form-control text-success">Complete</button>
+                                    <button class="form-control text-success">Complete</button>
                                 </div>
                             </div>
-                       </div>
+                        </div>
                     </div>
                     <div class="col-8">
                         <div class="form-group">

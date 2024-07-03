@@ -17,7 +17,7 @@ class LecturerSeeder extends Seeder
     {
         $lecturer = [
             [
-                'lecturer' => 'kasheshe makumbusho masalu',
+                'lecturer_name' => 'kasheshe makumbusho masalu',
                 'department_id' => '1',
                 'user_id'=>'4',
 

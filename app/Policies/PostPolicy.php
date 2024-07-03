@@ -29,10 +29,10 @@ class PostPolicy
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Post $post)
-    {
-        //
-    }
+    // public function view(User $user, Post $post)
+    // {
+    //     //
+    // }
 
     /**
      * Determine whether the user can create models.
@@ -54,10 +54,10 @@ class PostPolicy
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Post $post)
-    {
-        //
-    }
+    // public function update(User $user, Post $post)
+    // {
+    //     //
+    // }
 
     /**
      * Determine whether the user can delete the model.
@@ -66,10 +66,10 @@ class PostPolicy
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Post $post)
-    {
-        //
-    }
+    // public function delete(User $user, Post $post)
+    // {
+    //     //
+    // }
 
     /**
      * Determine whether the user can restore the model.
@@ -78,10 +78,10 @@ class PostPolicy
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Post $post)
-    {
-        //
-    }
+    // public function restore(User $user, Post $post)
+    // {
+    //     //
+    // }
 
     /**
      * Determine whether the user can permanently delete the model.
@@ -90,8 +90,8 @@ class PostPolicy
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Post $post)
-    {
-        //
-    }
+    // public function forceDelete(User $user, Post $post)
+    // {
+    //     //
+    // }
 }

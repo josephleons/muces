@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::table('courses', function (Blueprint $table) {
             $table->foreign('program_id')->references('id')->on('programs');
             $table->foreign('lecturer_id')->references('id')->on('lecturer');
+            $table->foreign('semister_id')->references('id')->on('semister');
             //
         });
     }
@@ -30,6 +31,7 @@ return new class extends Migration
         Schema::table('courses', function (Blueprint $table) {
             $table->dropForeign('program_id');
             $table->dropForeign('lecturer_id');
+            $table->dropForeign('semister_id');
 
             //
         });

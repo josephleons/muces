@@ -21,15 +21,12 @@ class ProgramController extends Controller
     {
         $userId = Auth::id();
          // // Fetch a single student along with their associated program and courses
-        $student = Student::where('user_id',$userId)->first();
-        if($student){
-            $programs = $student->program;
-            return view('programs.index',  compact('programs','student'));
-        }else{
-            // Pass the programs data to the view
-            return view('programs.index', compact('programs'));
-        }
+        $studentprogram = Student::with('program')->where('user_id',$userId)->get();
 
+        if (!$studentprogram) {
+            return redirect()->back()->with('error', 'Program not found');
+        }
+        return view ('programs.index',['studentprogram'=>$studentprogram]);
     }
 
     /**
@@ -59,7 +56,8 @@ class ProgramController extends Controller
         }
         // retrieve course related to program 
         $courses =$program->courses;
-         if($courses->isEmpty()){
+         
+        if($courses->isEmpty()){
             return view ('programs.no-course',  compact('program'));
             }
         // dd($courses);

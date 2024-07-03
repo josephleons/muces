@@ -16,14 +16,15 @@
         box-shadow: 2px 2px 4px rgba #002E3B;
 
     }
+    .textColor{
+        color: #002E3B
+    }
 </style>
-<div class="footer">
-    <div class="row ">
-        <div class="col text-white text-right pt-3">
+<div class="container-fluid" style="padding-top: 50%">
+    <div class="row">
+        <div class="textColor py-5 text-center">
+            <a class="textColor" href="https://muces.org.tz/">Mzumbe course Evaluation System </a>
             © 2024 Copyright All Rights Reserved<br>
-        </div>
-        <div class="col text-left pt-3 text-capitalize">
-            <a class="text-white" href="https://muces.org.tz/">Mzumbe course Evaluation System</a>
         </div>
     </div>
 </div>

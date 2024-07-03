@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
  {{-- course list title --}}
+ <div class="container-fluid">
 <div class="row align-items-center ml-5">
     <div class="col-auto">
         <i class="bi bi-three-dots-vertical textColor"></i>
@@ -34,47 +35,42 @@
                         <div class="col-md-12 col-sm-6 col-xm-12 ">
                             <table id="example" class="display table table-bordereless" style="width:100%">
                                 <thead class="table-muted">
-                                    <tr class="text-muted" style="text-transform: capitalize;font-size:14px;">
-                                        <th>S/N</th>
-                                        <th>Full Name</th>
-                                        <th>Registration_No</th>
+                                    <tr class="text-muted">
+                                        <th>Registration Number</th>
+                                        <th>Student Name</th>
+                                        <th>Description</th>
                                         <th>Program</th>
-                                        <th>Accademic year</th>
                                         <th>Semister</th>
-                                        <th>Gender</th>
+                                        <th>Accademic</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-capitalize">
-                                    @if($students-> isEmpty())
-                                        <small>No students Data Available </small>
-                                    @else
-                                    @foreach($students as $index => $student)
-                                    <tr>
-                                        <td>{{$index + 1}}</td>
-                                        <td>{{$student->fullname}}</td>
-                                        <td class="text-info">{{$student->registration_no}}</td>
-                                        <td>{{$student->program->program}}</td>
-                                        <td>{{$student->accademic_year}}</td>
-                                        <td>{{$student->semister}}</td>
-                                        <td>{{$student->gender}}</td>
+                                    @foreach ($student as $students)
+                                    <tr class="text-muted">
+                                        <td>{{$students->registration_no}}</td>
+                                        <td>{{$students->fullname}}</td>
+                                      @foreach ($programs as $program)
+                                        <td>{{$program->program}}</td>
+                                      @endforeach
+                                        <td>{{$students->semister}}</td>
+                                        <td>{{$students->accademic_year}}</td>
                                         <td>
                                             <span>
                                                 <div class="btn-group">
                                                     <button class="text-white btn btn-default" type="button" style="background-color:#FD876D">
                                                         View
                                                     </button>
-                                                    <ul class="dropdown-menu">
+                                                    {{-- <ul class="dropdown-menu">
                                                         <li>
                                                             <a class="dropdown-item" href="{{'/evaluators/index'.$student->id}}" type="button" data-toggle="modal" data-target="#exampleModal02" ><i class="bi bi-check2-circle text-muted fs-6 m-3"></i>View Department</a>
                                                         </li>
-                                                    </ul>
+                                                    </ul> --}}
                                                 </div>
                                             </span>
                                         </td>
                                     </tr>
                                     @endforeach
-                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -166,5 +162,5 @@
         </div>
     </div>
 </div>
-
+ </div>
 @endsection

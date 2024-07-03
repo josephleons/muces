@@ -20,7 +20,7 @@
         </ul>
     </div>
     @if (Auth::guest())
-    <ul class="navbar-nav text-capitalize">
+    <ul class="navbar-nav">
         <li class="nav-item mt-2">
             <i class="bi bi-box-arrow-left text-danger"></i>
         </li>
@@ -28,18 +28,17 @@
             <a class="nav-link active" aria-current="page" href="{{ '/login'}}">Login</a>
         </li>
         @else
-        <li class="nav-item text-capitalize" style="list-style:none">
+        <li class="nav-item" style="list-style:none">
             {{ Auth::user()->username }}
         </li>
         @endif
         @if (Auth::check())
-        <li class="nav-item dropdown text-white" style="list-style:none" style="margin-right:50px;">
+        <li class="nav-item dropdown text-white" style="list-style:none;margin-right:10%">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false">
             </a>
             <ul class="dropdown-menu" style="text-transform:lowercase">
-                <a class="dropdown-item" href="{{ url('#') }}">Manage Account<i
-                        class="bi bi-person-square ml-5"></i></a>
+                <a class="dropdown-item" href="{{ url('#') }}">Profile<i class="bi bi-person-square ml-5"></i></a>
                 <a class="dropdown-item mt-1" href="#">Setting<i class="bi bi-sliders ml-5"></i></a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item mt-1" href="{{ '/logout' }}">Logout<i class="bi bi-box-arrow-left ml-5"></i></a>
@@ -55,21 +54,18 @@
     <hr class="my-4">
     <ul class="nav navbar-nav" style="text-transform: capitalizes">
         <a href="#" class="btn-close btn-close-white fs-5" onclick="closeSlideMenu()">
-          
             <li class="nav-item pt-2">
-                <a class='nav-link text-white text-muted' href="{{ url('#') }}" onclick="toggleEvaluationDropdown(event)">
-                    <i class="bi bi-person-workspace text-muted fs-6 m-3"></i>Evaluator</a>
-                    <ul id="evaluationDropdown" class="nav navbar-nav" style="text-transform: capitalizes">
-                        {{-- <li class="nav-item ml-4"><a class='nav-link text-muted text-white ml-4 fs-6' href="{{ url('/evaluator/index') }}">Questionnare List</a></li> --}}
-                        <li class="nav-item ml-4"><a class='nav-link text-muted text-white ml-4 fs-6' href="{{ url('#') }}">Evaluation records</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class='nav-link text-white  text-muted' href="{{ url('/responses') }}"><i
+                <a class='nav-link text-white text-muted' href="{{ url('#') }}"
+                    onclick="toggleEvaluationDropdown(event)">
+                    <i class="bi bi-person-workspace text-muted fs-6 m-3"></i>Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class='nav-link text-white  text-muted' href="{{ url('/evaluators/create') }}"> <i
+                        class="bi bi-pencil-square text-muted fs-6 m-3"></i>Questionnaire</a>
+            </li>
+            <li class="nav-item">
+                <a class='nav-link text-white  text-muted' href="{{ url('/responses') }}"><i
                         class="bi bi-check2-circle text-muted fs-6 m-3"></i>Responses Records</a>
-                </li>
-
-            </a>
-        
-       
+            </li>
+        </a>
 </div>

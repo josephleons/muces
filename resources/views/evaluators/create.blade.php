@@ -1,12 +1,12 @@
-@extends('layouts.admin')
+@extends('layouts.evaluator')
 @section('content')
+<div class="container">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="textColor modal-title m-2" id="exampleModalLabel">Student: Evaluation Form</h5>
+            <h5 class="textColor modal-title m-2" id="exampleModalLabel">Student:Questionnaire</h5>
         </div>
         <div class="modal-body m-5">
             <form method="POST" action="{{ route('evaluators.store') }}">
-            {{-- {!! Form::open(['Action' => 'EvaluatorController@create','Method' =>'GET']) !!} --}}
             @csrf
             <div class="row">
                 <div class="col-md-6">
@@ -31,19 +31,18 @@
                             @else
                                 <option value="" disabled selected>Course</option>
                                 @foreach($courses as $course)
-                                    <option value="{{ $course->id }}">{{ $course->course }}</option>
+                                    <option value="{{ $course->id }}">{{ $course->course_name }}</option>
                                 @endforeach
                             @endif
                         </select>
                         @error('course')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
             </div>
-            
             <div class="row">
-                <div class="col-md-6">
+                {{-- <div class="col-md-6">
                     <div class="form-group">
                         {{Form::label('student','Dedicate Student')}}
                         <select name="student" class="form-select" aria-label="Student">
@@ -60,11 +59,11 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-md-6">
                     <div class="form-group">
                         {{Form::label('due_date','Due Date')}}
-                        {{ Form::date('due_date', \Carbon\Carbon::now(), ['class' => 'form-control']) }}
+                        {{Form::date('due_date', \Carbon\Carbon::now(), ['class' => 'form-control']) }}
                     </div>
                 </div>
             </div>
@@ -80,13 +79,14 @@
                 @enderror
                 </div>
             </div>
-            <div class="row">
-                <div class="modal-footer col-md-12 justify-content-center ">
-                    {{Form::submit('Save',['class'=>'cus text-white btn btn-default form-control','style' =>
-                    'background-color:#FD876D'])}}
+                <div class="row">
+                    <div class="modal-footer col-md-12 justify-content-center ">
+                        {{Form::submit('Save',['class'=>'cus text-white btn btn-default form-control','style' =>
+                        'background-color:#FD876D'])}}
+                    </div>
+                    {!! Form::close() !!}
                 </div>
-                {!! Form::close() !!}
-            </div>
         </div>
     </div>
+</div>
 @endsection

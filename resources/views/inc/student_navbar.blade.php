@@ -19,9 +19,8 @@
             </li>
         </ul>
     </div>
-
     @if (Auth::guest())
-    <ul class="navbar-nav text-capitalize mr-5 ">
+    <ul class="navbar-nav">
         <li class="nav-item mt-2">
             <i class="bi bi-box-arrow-left text-danger"></i>
         </li>
@@ -29,21 +28,20 @@
             <a class="nav-link active" aria-current="page" href="{{ '/login'}}">Login</a>
         </li>
         @else
-        <li class="nav-item text-capitalize textColor" style="list-style:none">
+        <li class="nav-item textColor" style="list-style:none">
             {{ Auth::user()->username }}
         </li>
         @endif
         @if (Auth::check())
-        <li class="nav-item dropdown text-white text-capitalize" style="list-style:none" style="margin-right:150px;">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"data-bs-display="static"  href="#" role="button" 
+        <li class="nav-item dropdown text-white" style="list-style:none;margin-right:10%">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false">
             </a>
-            <ul class="dropdown-menu">
-                <a class="dropdown-item" href="{{ url('#') }}">Manage Account<i
-                        class="bi bi-person-square ml-5"></i></a>
-                <a class="dropdown-item mt-1" href="#">Setting<i class="bi bi-sliders ml-5"></i></a>
+            <ul class="dropdown-menu text-muted">
+                <a class="dropdown-item" href="{{url('#') }}">Profile<i class="bi bi-person-square ml-5 fs-6"></i></a>
+                <a class="dropdown-item mt-1" href="#">Setting<i class="bi bi-sliders ml-5 fs-6"></i></a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item mt-1" href="{{ '/logout' }}">Logout<i class="bi bi-box-arrow-left ml-5"></i></a>
+                <a class="dropdown-item mt-1" href="{{ '/logout' }}">Logout<i class="bi bi-box-arrow-left ml-5 fs-6"></i></a>
                 @endif
             </ul>
         </li>
@@ -53,29 +51,30 @@
     <img style="width:20px; height:20px" class="shadow rounded-circle mx-2" src="{{ url('assets/images/mucems.jpg') }}">
     <span class="fs-6">{{('MU-CEMS')}}</span>
     <ul class="nav navbar-nav" style="text-transform: capitalizes">
-            <a href="#" class="btn-close btn-close-white fs-5" onclick="closeSlideMenu()">
+        <a href="#" class="btn-close btn-close-white fs-5" onclick="closeSlideMenu()">
             <li class="nav-item">
                 <a class='nav-link text-white  text-muted' href="{{ url('/students') }}"><i
-                class="bi bi-check2-circle text-muted fs-6 m-3"></i>Dashboard</a>
+                        class="bi bi-check2-circle text-muted fs-6 m-3"></i>Dashboard</a>
             </li>
             <li class="nav-item">
                 <a class='nav-link text-white  text-muted' href="{{ url('/students/questionnaire') }}"><i
-                class="bi bi-check2-circle text-muted fs-6 m-3"></i>Questionnaire</a>
+                        class="bi bi-check2-circle text-muted fs-6 m-3"></i>Questionnaire List</a>
             </li>
-            
             @if(!Auth::user()->student)
-                    <li class="nav-item">
-                        <a class='nav-link text-white text-muted' href="{{ url('/students/studentRegister') }}"><i
+            <li class="nav-item">
+                <a class='nav-link text-white text-muted' href="{{ url('/students/studentRegister') }}"><i
                         class="bi bi-person text-muted fs-6 m-3"></i>Student Register</a>
-                    </li>
+            </li>
             @endif
             <li class="nav-item">
                 <a class='nav-link text-white text-muted' href="{{ url('#') }}" onclick="toggleRegisterDropdown(event)">
                     <i class="bi bi-book text-muted fs-6 m-3"></i>Registration</a>
-                    <ul id="registrationDropdown" class="nav navbar-nav" style="text-transform: capitalizes">
-                        <li class="nav-item ml-4"><a class='nav-link text-muted text-white ml-4 fs-6' href="{{ url('/programs') }}">Program Structure</a></li>
-                        <li class="nav-item ml-4"><a class='nav-link text-muted text-white ml-4 fs-6' href="{{ url('/enroll/create') }}">Course Enrolled</a></li>
-                    </ul>
+                <ul id="registrationDropdown" class="nav navbar-nav" style="text-transform: capitalizes">
+                    <li class="nav-item ml-4"><a class='nav-link text-muted text-white ml-4 fs-6'
+                            href="{{ url('/programs') }}">Program Structure</a></li>
+                    <li class="nav-item ml-4"><a class='nav-link text-muted text-white ml-4 fs-6'
+                            href="{{ url('/enroll/create') }}">Course Enrolled</a></li>
+                </ul>
             </li>
     </ul>
 </div>

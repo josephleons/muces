@@ -17,17 +17,17 @@ class CoursesTableSeeder extends Seeder
     {
         $course = [
             [
-                'course' => 'Development Perspectives',
-                'code' => 'DST 100',
-                'type' => 'None Code',
+                'course_name' => 'Development Perspectives',
+                'course_code' => 'DST 100',
+                'course_type' => 'None Code',
                 'credit' => '12.00',
                 'lecturer' => 'Amani katwila',
                
             ],
             [
-                'course' => 'Communication skills',
-                'code' => 'COM 101',
-                'type' => 'Core',
+                'course_name' => 'Communication skills',
+                'course_code' => 'COM 101',
+                'course_type' => 'Core',
                 'credit' => '13.00',
                 'lecturer' => 'Mr mashaka',
               

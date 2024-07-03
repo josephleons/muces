@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
  {{-- course list title --}}
+ <div class="container-fluid">
 <div class="row align-items-center ml-5">
     <div class="col-auto">
         <i class="bi bi-three-dots-vertical textColor"></i>
@@ -62,14 +63,14 @@
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         <li>
-                                                            <a class="dropdown-item" href="{{'/evaluators/index'.$department->id}}" type="button" data-toggle="modal" data-target="#exampleModal02" ><i class="bi bi-check2-circle text-muted fs-6 m-3"></i>View Department</a>
+                                                            <a class="dropdown-item" href="{{'#'}}" type="button" data-toggle="modal" data-target="#exampleModal02" ><i class="bi bi-check2-circle text-muted fs-6 m-3"></i>View Department</a>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </span>
                                             <span>
                                                 <a onclick="return confirm('Are you sure you wnat to delete this entry?')"
-                                                  href="{{url('delete/'.$department->id)}}"
+                                                  href="{{'#'}}"
                                                    style="background-color:#FD876D" class="text-white btn btn-default">Delete
                                                 </a>
                                               </span>
@@ -100,4 +101,5 @@
         </div>
     </div>
 </div>
+ </div>
 @endsection

@@ -19,9 +19,9 @@
                                 </div>
                             </div>
                             {{-- Hidden Id store to Response table  --}}
-                            <input type="hidden"class="fs-6 textColor" name="evaluation_form_id" value="{{$question->id}}">
+                            <input type="hidden"class="fs-6 textColor" name="question_id" value="{{$question->id}}">
                             <div class="col-12 mt-3">
-                                <h2 class="lead">Course Code</h2>
+                                <h2 class="lead">Course Name</h2>
                                 <div class="form-group">
                                     <p class="fs-6 textColor">{{$question->course}}</p>
                                 </div>

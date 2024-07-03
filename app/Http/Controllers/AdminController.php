@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Student;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -32,8 +33,20 @@ class AdminController extends Controller
 
     public function managestudents()
     {
-        $students = Student::with('program')->get();
-        return view('admin.managestudents',['students'=> $students]);
+        
+         $userId = Auth::id();
+         // // Fetch a single student along with their associated program and courses
+        $student = Student::with('program')->get();
+
+        if (!$student) {
+            return redirect()->back()->with('error', 'Program not found');
+        }
+        // $programs = Program::all();
+        $programs= $student;
+        if($programs->isEmpty()){
+            return redirect()->back()->with('error', 'Student not found');
+        }
+        return view ('admin.managestudents', compact('programs','student'));
     }
 
     public function managequality()

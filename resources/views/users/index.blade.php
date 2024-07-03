@@ -11,18 +11,15 @@
     </ul>
   </div>
 </div>
-{{-- display user and other tabs --}}
 <ul class="nav nav-tabs text-capitalize">
   <li class="nav-item" role="presentation">
     <a href="#" class="nav-link" id="user-tab" data-toggle="tab" data-target="#user" type="button" role="tab"
       aria-controls="user" aria-selected="true">Registered Users</a>
   </li>
 </ul>
-{{-- <div id="user"> --}}
   <div class="tab-content  mt-5">
     <div class="tab-pane active" id="user" role="tabpanel" aria-labelledby="user-tab">
       <div class="card-header">
-      {{-- @include('inc.messages') --}}
       <div class="row ml-3">
         <div class="col-lg-12 col-sm-6 col-xm-12 ">
           <div class="table-responsive">
@@ -64,7 +61,6 @@
     </div>
   </div>
   </div>
-  {{-- end tabs one --}}
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">

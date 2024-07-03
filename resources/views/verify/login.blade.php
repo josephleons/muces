@@ -56,16 +56,12 @@
                                     <i class="bi bi-lock"></i>
                                 </span>
                                 {{Form::password('password', ['class' => 'form-control','placeholder'=>'Password'])}}
-                                {{-- {{Form::text('password','',['class'=>'form-control','placeholder'=>'Password'])}} --}}
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group  p-2 mt-4">
                                 {{ Form::submit('Login', ['class' => 'text-white btn btn-default form-control', 'style' => 'background-color:#FD876D']) }}
-    
                             </div>
-                            {{-- footer --}}
-                            <a href="#"><small class="title fs-6 mx-5 d-flex"> Forgot your password ?</small></a>
                         </div>
                         {!! Form::close() !!}
                     </div>

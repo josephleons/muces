@@ -16,6 +16,16 @@ class Course extends Model
 
     public function students()
     {
-        return $this->belongsToMany('App\Models\Student');
+        return $this->belongsToMany(Student::class);
+    }
+
+    public function semister(){
+        return $this->belongsTo(Semister::class);
+    }
+    public function response_questions (){
+        return $this->belongsTo(EvaluationForm::class);
+    }
+    public function lecturer(){
+        return $this->belongsTo(Lecturer::class);
     }
 }

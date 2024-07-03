@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('evaluation_forms', function (Blueprint $table) {
-            $table->id();
+        Schema::create('questionnaire', function (Blueprint $table) {
+            $table->id('question_id');
             $table->string('question');
-            $table->string('student');
             $table->string('course');
             $table->date('due_date');
             $table->string('status');
-            // $table->timestamps();
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('evaluation_forms');
+        Schema::dropIfExists('questionnaire');
     }
 };

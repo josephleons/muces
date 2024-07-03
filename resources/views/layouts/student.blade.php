@@ -31,36 +31,29 @@
 
 <body class="bodyColor">
   @include('inc.student_navbar')
-  <div class="container">
-    @yield('content')
+    <div class="container">
+     @yield('content')
   </div>
+    {{-- composer require unisharp/laravel-ckeditor --}}
+    <script src="{{url('ckeditor4/ckeditor.js')}}"></script>
+    <script>
+        CKEDITOR.replace('ckeditor');
+    </script>
+    <script src="{{url('jquery/dist/jquery.slim.min.js')}}"></script>
+    <script src="{{url('assets/js/popper.min.js')}}"></script>
+    <script src="{{url('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{url('assets/js/custom.js')}}"></script>
+    <!-- Bootstrap Bundle with Popper.js (optional, for Bootstrap JS components) -->
+    <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-
-  {{-- composer require unisharp/laravel-ckeditor --}}
-  <script src="{{url('ckeditor4/ckeditor.js')}}"></script>
-  <script>
-    CKEDITOR.replace('ckeditor');
-  </script>
-
-  {{-- custom js file --}}
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="{{url('assets/js/popper.min.js')}}"></script>
-  <script src="{{url('assets/js/bootstrap.min.js')}}"></script>
-  <script src="{{url('assets/js/custom.js')}}"></script>
-  <!-- Bootstrap Bundle with Popper.js (optional, for Bootstrap JS components) -->
-  <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
- 
-   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-   
-   <script>
-    $(document).ready(function() {
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function() {
         $('#example').DataTable();
       } );
-  </script> 
-  
+    </script>
+      @include('inc.footer')
 </body>
 </html>

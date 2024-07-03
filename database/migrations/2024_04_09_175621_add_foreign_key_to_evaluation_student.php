@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('evaluation_form_student', function (Blueprint $table) {
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
-            $table->foreign('evaluation_form_id')->references('id')->on('evaluation_forms')->onDelete('cascade');
+            // $table->foreign('evaluation_form_id')->references('id')->on('evaluation_forms')->onDelete('cascade');
         });
     }
 
@@ -28,7 +28,7 @@ return new class extends Migration
     {
         Schema::table('evaluation_form_student', function (Blueprint $table) {
             $table->dropForeign('student_id');
-            $table->dropForeign('evaluation_form_id');
+            // $table->dropForeign('evaluation_form_id');
         });
     }
 };
