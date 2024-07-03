@@ -103,13 +103,14 @@
                                                                     {{strip_tags($response->response)}}
                                                                    
                                                                 </div>
-                                                                <div class="col-md-2 text-success ">
-                                                                    <a class="btn btn-success">{{$response->status}}</a>
+                                                                <div class="col-md-2 text-white mb-1">
+                                                                    <a class="btn btn-default"style="background-color:#FD876D">{{$response->status}}</a>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <hr>
                                                             </div>
+                                                            <a class="btn btn-primary text-white" onclick="window.print()">Print</a>
                                                             @endforeach
                                                         </div>
                                                     </div>
@@ -120,6 +121,7 @@
                                         @endif
                                     </tbody>
                                 </table>
+                               
                             </div>
                         </div>
                     </div>

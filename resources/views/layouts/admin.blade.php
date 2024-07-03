@@ -23,7 +23,8 @@
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" type="text/css"
     rel="stylesheet">
-  <link href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" type="text/css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css" type="text/css" rel="stylesheet">
+
   <title>{{config('app.name','MUCES')}}</title>
   <link rel="shortcut icon" style="width:50px" class="shadow rounded-circle m-3"
     href="{{url('assets/images/mucems.jpg')}}">
@@ -46,10 +47,9 @@
     <script src="{{url('assets/js/custom.js')}}"></script>
     <!-- Bootstrap Bundle with Popper.js (optional, for Bootstrap JS components) -->
     <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
         $('#example').DataTable();
