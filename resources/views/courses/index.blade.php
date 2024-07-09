@@ -157,7 +157,7 @@
                 </div>
                 <div class="row">
                     <div class="modal-footer col-md-12 justify-content-center ">
-                        {{Form::submit('Save',['class'=>'cus text-white btn btn-default form-control','style' =>
+                        {{Form::submit('save',['class'=>'cus text-white btn btn-default form-control','style' =>
                         'background-color:#FD876D'])}}
                     </div>
                     {!! Form::close() !!}

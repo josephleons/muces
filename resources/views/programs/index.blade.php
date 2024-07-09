@@ -15,8 +15,7 @@
                             <th>Registration Number</th>
                             <th>Student Name</th>
                             <th>Program</th>
-                            <th>Semister</th>
-                            <th>Accademic year</th>
+                            <th>Study Year</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -26,13 +25,8 @@
                             <td>{{$students->registration_no}}</td>
                             <td>{{$students->fullname}}</td>
                             <td>{{$students->program}}</td>
-                          {{-- @foreach ($programs as $program)
-                            <td>{{$program->program}}</td>
-                          @endforeach --}}
-                            <td>{{$students->semister}}</td>
                             <td>{{$students->accademic_year}}</td>
-                           
-                            <td>
+                          <td>
                                 <span>
                                     <div class="btn-group">
                                         <button class="text-white btn btn-default" type="button" style="background-color:#FD876D">

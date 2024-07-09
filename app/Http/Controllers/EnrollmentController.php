@@ -40,7 +40,7 @@ class EnrollmentController extends Controller
         $student->courses()->sync($request->input('courses'));
     
         // Redirect back to the enrollment form with a success message
-        return redirect()->route('enroll.create')->with('success', 'Enrollment successful.');
+        return redirect()->route('students.index')->with('success', 'Enrollment successful.');
     }
 
     /**

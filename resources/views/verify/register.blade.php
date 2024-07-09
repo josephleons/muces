@@ -38,7 +38,7 @@
                         <h4 class="title" style="text-align:center; color:#2D3748">
                             <img style="width:50px" class="shadow rounded-circle m-3"
                                 src="{{ url('assets/images/ttms.jpg') }}">
-                            Teacher Registration Form
+                            
                         </h4>
                     </div>
                     <div class="card-body">

@@ -22,28 +22,6 @@ class StudentController extends Controller
      public function student (){
         return view('students.student');
      }
-    // public function index()
-    // {
-    //     $userId = Auth::id();
-    //     // Fetch the student associated with the logged-in user
-    //     $student =Student::where('user_id',$userId)->first();
-    //     // Check if the user is associated with a student
-    //     if ($student) {
-    //         $program = $student->program;
-    //         // Now you have the program data and you can access its related students
-    //         $students = $program->students;
-    //         return view('students.index', compact('program', 'students'));
-    //     } else {
-    //         // Handle the case if the logged-in user is not associated with a student
-    //         return redirect()->back()->with('error', 'You are not associated with a student.');
-    //     }
-    //     // return view('students.index', compact('program', 'students'));
-
-
-
-    // }
-    
-    
 
     public function index()
     {
@@ -62,18 +40,6 @@ class StudentController extends Controller
     
     public function Questionnaire ()
     {
-        // $userId = Auth::id();
-        // $student = Student::where('user_id', $userId)->first();
-        // // if student found get they Questionnaire
-        // if($student){
-        //      $evaluationForm = $student->evaluationForm;
-        //     //  dd($evaluationForm);
-        //      return view ("students.questionnaire", compact('student','evaluationForm'));
-        // }else{
-        //      // Handle the case if the logged-in user is not associated with a student
-        //      return redirect()->back()->with('error', 'You are not associated with a student.');
-        // }
-
         // above code was to retrieve specific student and its related questionnaire be assigned
         $questionnaires = EvaluationForm::all();
         return view ("students.questionnaire",['questionnaires'=>$questionnaires]);
@@ -84,7 +50,7 @@ class StudentController extends Controller
     public function studentRegister (){
         
         $programs = Program::all();
-        return view('students.studentRegister',compact('programs'));
+        return view('students.studentRegister', compact('programs'));
     }
 
     /**

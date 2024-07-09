@@ -52,16 +52,12 @@ Route::group(['middleware'=>'VerifyMiddleware'], function(){
 // Route::get('/', [AdminController::class, 'index'])->name('index');
 });
 
-// // profile
-// Route::get('/profile',[UserController::class,'profile']);
-
-// //add users
-// Route::get('/add_user',[UserController::class,'create']);
 
 // Admin
 Route::prefix('admin')->middleware(['auth','is_admin'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index')->name('index');
     Route::get('/listEvaluator', [AdminController::class, 'listEvaluator'])->name('listEvaluator');
+    Route::post('/listEvaluator',[UserController::class, 'store'])->name('listEvaluator');
     Route::post('/listEvaluator', [UserController::class, 'store'])->name('store');
     Route::get('/managedepartments', [AdminController::class, 'managedepartments'])->name('managedepartments');
     Route::get('/managestudents', [AdminController::class, 'managestudents'])->name('managestudents');
@@ -70,7 +66,6 @@ Route::prefix('admin')->middleware(['auth','is_admin'])->group(function () {
     // Include resourceful routes for AdminController
     Route::resource('/', AdminController::class);
 });
-
 
 
 // Student 
@@ -91,15 +86,13 @@ Route::prefix('students')->middleware(['auth','is_student'])->group(function () 
     Route::resource('students', StudentController::class);
 });
 
-// Evaluator 
+// Evaluator  /is quality assuarance
 Route::prefix('evaluators')->middleware('auth')->group(function () {
     // Route for accessing the index method of EvaluatorController
     Route::get('/', [EvaluatorController::class, 'index'])->name('evaluators.index');
     Route::get('/create', [EvaluatorController::class, 'create'])->name('create');
     // Route::post('/create', [EvaluatorController::class, 'store'])->name('store');
     Route::post('/store',[EvaluatorController::class,'store'])->name('evaluators.store');
-
-    
     // Resourceful routes for EvaluatorController
     Route::resource('/', EvaluatorController::class);
 });
@@ -112,13 +105,14 @@ Route::prefix('courses')->middleware('auth')->group(function () {
 });
 
 // / programs 
-Route::prefix('programs')->middleware(['auth'])->group(function () {
+// Route::prefix('programs')->middleware(['auth'])->group(function () {
+Route::prefix('programs')->group(function () {
     Route::get('/', [ProgramController::class, 'index'])->name('index');
     Route::post('/', [ProgramController::class, 'store']);
     Route::get('/course_list', [ProgramController::class, 'store'])->name('programs.course_list');
-    // Route::post('/course_list', [ProgramController::class, 'store'])->name('programs.course_list');
-    // Route::get('/course_list', [ProgramController::class, 'course_list']);
-
+    Route::get('/show/{id}', [ProgramController::class, 'show'])->name('programs.show');
+    Route::get('/student_program/{id}', [ProgramController::class, 'student_program'])->name('programs.student_program');
+    
     // Include resourceful routes for AdminController
     Route::resource('programs', ProgramController::class);
 });

@@ -38,7 +38,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.add_user');
+        return view ('users.add_user');
     }
 
     /**
@@ -59,13 +59,15 @@ class UserController extends Controller
         ]);
        
             $user = new User;
-            $user->usertype=$request->input('usertype');
-            $user->contact=$request->input('contact');
-            $user->email=$request->input('email');
-            $user->username=$request->input('username');
-            $user->password=Hash::make($request->input('password'));
+            $user->usertype= $request->input('usertype');
+            $user->contact= $request->input('contact');
+            $user->email= $request->input('email');
+            $user->username= $request->input('username');
+            $user->password= Hash::make($request->input('password'));
+            // dd($user);
             $user->save();
-            return redirect('/admin')->with('Success', 'A New User Added Success.');
+           
+            return redirect()->route('listEvaluator')->with('success', 'User created successfully!');
             // return redirect()->route('admin')->with('success', 'Account Created Success');
            
         
@@ -124,5 +126,33 @@ class UserController extends Controller
     public function profile(){
         return view('users.profile');
     }
+
+    // public function store(Request $request)
+    // {
+    //     // Validation if necessary
+    //     $request->validate([
+    //         // 'usertype'=>'required',
+    //         // 'email' => 'required|string|email|max:255|unique:users',
+    //         'email' => 'required|string|email|max:255',
+    //         'username' => 'required',
+    //         'contact'=>'required',
+    //         // 'password'=>'required|min:8|same:confirmPassword',
+    //         // Add other fields as needed
+    //     ]);
+
+    //     // Create the user
+    //     $user = User::create([
+    //         // 'usertype' => $request->input('usertype'),
+    //         'email' => $request->input('email'),
+    //         'contact' => $request->input('contact'),
+    //         'username' => $request->input('username'),
+    //         // 'password' => Hash::make($request->input('password'))
+
+    //     ]);
+
+    //     // Redirect or respond as needed
+    //     // return redirect()->route('users.index')->with('success', 'User created successfully.');
+    //     return redirect()->route('listEvaluator')->with('success', 'User created successfully!');
+    // }
 
 }

@@ -9,7 +9,12 @@ class Course extends Model
 {
     use HasFactory;
     // define Relationship course is belongto program
-   
+    protected $fillable = [
+        // 'name',
+        'courses',
+       
+        // 'users_id'
+    ];
     public function programs(){
         return $this->belongsTo(Program::class);
     }

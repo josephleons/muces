@@ -56,6 +56,10 @@
         <a href="#" class="btn-close btn-close-white fs-5" onclick="closeSlideMenu()"></a>
         </hr>
         <li class="nav-item">
+            <a class='nav-link text-white  text-muted' href="{{ url('/admin') }}"><i
+                    class="bi bi-person-workspace text-muted fs-6 m-3"></i>Dashboard</a>
+        </li>
+        <li class="nav-item">
             <a class='nav-link text-white text-muted' href="{{ url('#') }}" onclick="toggleEvaluatorDropdown(event)">
                 <i class="bi bi-people text-muted fs-6 m-3"></i>Manage user</a>
             <ul id="evaluatorDropdown" class="nav navbar-nav" style="text-transform: capitalize">
@@ -66,7 +70,7 @@
         <li class="nav-item">
             <a class='nav-link text-white text-muted' href="{{ url('#') }}"
                 onclick="toggleFacultyManageDropdown(event)">
-                <i class="bi bi-person-workspace text-muted fs-6 m-3"></i>Manage Faculty</a>
+                <i class="bi bi-people text-muted fs-6 m-3"></i>Manage Faculty</a>
             <ul id="FacultyDropdown" class="nav navbar-nav" style="text-transform: capitalize">
                 <li class="nav-item ml-4"><a class='nav-link text-muted text-white ml-4 fs-6'
                     href="{{ url('/admin/managedepartments') }}">Department

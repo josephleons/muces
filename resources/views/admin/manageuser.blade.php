@@ -13,18 +13,18 @@
   </div>
   <hr class="ml-5 mt-2 textColor">
 </div>
-{{-- course list title --}}
+{{-- user list --}}
 <div id="user" class="ml-5">
   <div class="tab-content  mt-5">
     <div class="tab-pane active" id="user" role="tabpanel" aria-labelledby="user-tab">
       <div class="card">
         <div class="card-header" style="background-color:#002E3B">
-          <div class="row m-2">
+          <div class="row m-0">
             <div class="col-md-12 d-flex justify-content-end">
               <ul class="nav nav-tabs">
                 <li class="nav-item" role="presentation">
-                  <a href="#adduser" type="button" data-toggle="modal" data-target="#exampleModal03">
-                    <i class="bi bi-plus-circle-dotted fs-5 mr-2 text-danger"></i>Add User</a>
+                  <a href="#adduser" class="nav-link" type="button" data-toggle="modal" data-target="#exampleModal03">
+                    <i class="bi bi-plus-circle-dotted mr-1 text-danger"></i>User</a>
                 </li>
               </ul>
             </div>
@@ -41,7 +41,7 @@
                     <th>Email</th>
                     <th>Contact</th>
                     <th>Roles</th>
-                    <th>Actions</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -83,7 +83,7 @@
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {!! Form::open(['Action' => 'UserController@store','Method' =>'POST']) !!}
+        {!! Form::open(['route' => 'listEvaluator', 'method' => 'POST']) !!}
         @csrf
         <div class="row">
           <div class="col-md-6">
@@ -97,7 +97,7 @@
             <select name="usertype" class="form-select" aria-label="User Type">
               <option value="" disabled selected>User Type</option>
               <option value="Q_assurance">Quality Assurance</option>
-              <option value="Dean">Course Dean of Faculties</option>
+              <option value="Dean">Dean of Faculties</option>
               <option value="Student">Student</option>
             </select>
             @error('question')
@@ -109,14 +109,19 @@
           <div class="col-md-6">
             {{Form::label('Username','Username')}}
             <div class="form-group">
-              {{Form::text('username','',['class'=>'form-control','placeholder'=>'Username'])}}
+                    <input type="text" class="form-control" placeholder="Username" id="validationCustom01"
+                  name="username" required>
+                  @error('username')
+                  <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
           </div>
           <div class="col-md-6">
-            {{Form::label('Contact','Contact')}}
-            <div class="form-group">
-              {{Form::text('contact','',['class'=>'form-control','placeholder'=>'Contact'])}}
-            </div>
+            <input type="text" class="form-control" placeholder="Contact" id="validationCustom01"
+                  name="contact" required>
+                  @error('contact')
+                  <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
           </div>
         </div>
         <div class="row">
@@ -135,12 +140,12 @@
         </div>
         <div class="row">
           <div class="modal-footer col-md-12 justify-content-center ">
-            {{Form::submit('Save',['class'=>'cus text-white btn btn-default form-control','style' =>
+            {{Form::submit('save',['class'=>'cus text-white btn btn-default form-control','style' =>
             'background-color:#FD876D'])}}
           </div>
-          {!! Form::close() !!}
         </div>
       </div>
+      {!! Form::close() !!}
     </div>
   </div>
 </div>
